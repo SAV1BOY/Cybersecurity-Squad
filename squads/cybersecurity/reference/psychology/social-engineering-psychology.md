@@ -1,79 +1,161 @@
-# Psicologia do Social Engineering
+# Psychology of Social Engineering
 
-## Visao Geral
-Social engineering explora mecanismos psicologicos fundamentais do comportamento
-humano. Entender esses mecanismos permite ao squad tanto simular ataques quanto
-defender contra eles de forma mais eficaz.
+## Purpose
 
-## Principios de Influencia (Cialdini)
+Reference for understanding the psychological principles that underpin social engineering attacks. Covers Cialdini's influence principles as applied to security, pretexting framework construction, trust exploitation mechanics, and defensive awareness training design.
 
-### Reciprocidade
-- Tendencia a retribuir favores recebidos
-- **Ataque**: oferecer ajuda tecnica para obter credenciais
-- **Defesa**: treinar equipes para reconhecer favores nao solicitados
+## Cialdini's Six Principles of Influence in Social Engineering
 
-### Compromisso e Consistencia
-- Tendencia a manter coerencia com decisoes anteriores
-- **Ataque**: obter pequenos "sim" antes do pedido principal
-- **Defesa**: criar checkpoints de verificacao em processos
+### 1. Reciprocity
 
-### Prova Social
-- Tendencia a seguir o comportamento de outros
-- **Ataque**: "todos os outros membros do time ja enviaram seus dados"
-- **Defesa**: incentivar questionamento independente
+**Principle**: People feel obligated to return favors.
 
-### Autoridade
-- Tendencia a obedecer figuras de autoridade
-- **Ataque**: se passar por CEO, TI, auditor
-- **Defesa**: verificacao de identidade obrigatoria
+**Attack Application**:
+- Attacker provides "help" (e.g., IT support call) before requesting credentials
+- Free gifts or services precede information requests
+- Sharing "insider information" creates sense of obligation
 
-### Escassez
-- Valorizacao maior do que e escasso ou urgente
-- **Ataque**: criar urgencia artificial ("sua conta sera bloqueada")
-- **Defesa**: treinar para pausar e verificar antes de agir
+**Example Pretext**: "I just cleared that ticket for you ahead of the queue. Could you verify your account details so I can close it out properly?"
 
-### Afinidade
-- Tendencia a confiar em quem gostamos ou nos identificamos
-- **Ataque**: pretexting que cria rapport rapido
-- **Defesa**: separar simpatia de confianca em processos
+**Defense**: Train staff to recognize unsolicited help as a potential manipulation vector. Verify identity regardless of perceived debt.
 
-## Vetores de Ataque e Psicologia
+### 2. Commitment and Consistency
 
-### Phishing
-- Explora: urgencia, autoridade, medo
-- Gatilhos emocionais: perda financeira, problemas legais
-- Defesa cognitiva: pausar, verificar remetente, nao clicar
+**Principle**: Once people commit to something, they tend to follow through to remain consistent.
 
-### Vishing (Voice Phishing)
-- Explora: pressao social, empatia, autoridade vocal
-- Fator adicional: interacao em tempo real dificulta analise
-- Defesa: scripts de verificacao, callback procedures
+**Attack Application**:
+- Start with small, harmless requests, then escalate (foot-in-the-door technique)
+- Get verbal agreement before asking for action
+- Reference previous interactions to build continuity
 
-### Pretexting
-- Explora: confianca, afinidade, autoridade
-- Construcao: identidade falsa elaborada e crivel
-- Defesa: verificacao de identidade multi-fator
+**Example Pretext**: "Last time we spoke, you agreed to help test the new login system. I just need you to click this link and enter your current password to complete setup."
 
-### Tailgating/Piggybacking
-- Explora: cortesia, normas sociais
-- Fator cultural: brasileiros tendem a ser acolhedores
-- Defesa: cultura de seguranca sem constrangimento
+**Defense**: Teach that prior agreement does not obligate compliance with new, unverified requests. Every request must stand on its own authorization.
 
-## Fatores Culturais Brasileiros
-- Cultura relacional forte (jeitinho brasileiro)
-- Tendencia a evitar confronto direto
-- Respeito a hierarquia e autoridade
-- Valorização de relacionamentos pessoais
-- Necessidade de adaptar treinamentos ao contexto cultural
+### 3. Social Proof
 
-## Aplicacao no Squad
-- Red team: usar principios para campanhas mais realistas
-- Blue team: treinar defesas baseadas em psicologia
-- Awareness: programas que ensinam os principios, nao apenas regras
-- Assessments: avaliar resiliencia humana da organizacao
-- Culture: promover questionamento saudavel
+**Principle**: People follow what others are doing, especially under uncertainty.
 
-## Notas do Squad
-Social engineering e o vetor mais eficaz e o mais dificil de defender.
-Investir em programas de awareness que ensinem o "porque" por tras dos
-comportamentos vulneraveis, nao apenas o "nao faca isso".
+**Attack Application**:
+- "Everyone in your department has already completed this" (phishing)
+- Name-dropping colleagues who already complied
+- Fake testimonials or endorsements in phishing pages
+
+**Example Pretext**: "Hi, this is IT. We're migrating email accounts. Sarah, Tom, and David from your team have already updated their credentials. You're one of the last ones."
+
+**Defense**: Establish independent verification channels. "Everyone else did it" is never valid authorization.
+
+### 4. Authority
+
+**Principle**: People comply with perceived authority figures.
+
+**Attack Application**:
+- Impersonating executives, IT administrators, law enforcement
+- Using official-sounding titles, jargon, and reference numbers
+- Creating urgency tied to authority consequences
+
+**Example Pretext**: "This is the CISO's office. We've detected a compromise on your account. I need you to reset your password immediately using this secure link."
+
+**Defense**: Establish that authority must be verified, not assumed. Create culture where challenging authority on security matters is expected.
+
+### 5. Liking
+
+**Principle**: People are more easily influenced by those they like.
+
+**Attack Application**:
+- Building rapport before attack (long-con social engineering)
+- Mirroring communication style, interests, background
+- Expressing shared frustration ("I know these security policies are annoying, but...")
+
+**Defense**: Awareness that rapport does not equal trustworthiness. Maintain verification procedures regardless of relationship perception.
+
+### 6. Scarcity
+
+**Principle**: Perceived scarcity increases perceived value and urgency.
+
+**Attack Application**:
+- "Your account will be locked in 2 hours if you don't verify"
+- "This offer/access expires today"
+- Limited-time urgency to bypass critical thinking
+
+**Defense**: Any message creating artificial urgency should trigger suspicion. Legitimate processes have reasonable timelines.
+
+## Pretexting Framework
+
+### Pretext Construction Methodology
+
+1. **Research Phase**: OSINT on target organization, culture, processes, personnel
+2. **Persona Development**: Create believable identity with backstory, motivation, authority level
+3. **Scenario Design**: Construct situation that justifies the information request
+4. **Prop Development**: Email addresses, phone numbers, badges, uniforms, websites
+5. **Rehearsal**: Practice delivery, anticipate questions, prepare fallback stories
+6. **Execution**: Deliver pretext with confidence, adapt to responses
+7. **Escalation Path**: Plan for challenges or verification attempts
+
+### Effective Pretext Characteristics
+
+| Element | Requirement |
+|---------|-------------|
+| Plausibility | Must fit within target's normal experience |
+| Verifiability | Includes details that check out if investigated superficially |
+| Urgency | Time pressure reduces critical analysis |
+| Authority | Leverages power dynamics |
+| Emotional hook | Triggers emotional response (fear, curiosity, helpfulness) |
+| Minimal ask | Requests seem reasonable relative to context |
+
+## Trust Exploitation Mechanics
+
+### Trust Building Timeline
+
+| Phase | Duration | Technique |
+|-------|----------|-----------|
+| Introduction | Minutes | Authority signals, shared context |
+| Validation | Minutes-Hours | Demonstrate knowledge, provide value |
+| Rapport | Hours-Days | Personal connection, consistency |
+| Exploitation | Seconds | Pivot from trust to request |
+| Maintenance | Ongoing | Post-exploitation access preservation |
+
+### Cognitive Biases Exploited
+
+| Bias | Description | Attack Use |
+|------|-------------|-----------|
+| Anchoring | First information disproportionately influences | Set context before the ask |
+| Confirmation bias | Seek info confirming beliefs | Align pretext with expectations |
+| Optimism bias | "It won't happen to me" | Exploit complacency |
+| Dunning-Kruger | Overconfidence in abilities | Target users confident they "can't be fooled" |
+| Halo effect | Positive impression generalizes | Professional appearance = trustworthy |
+| Authority bias | Automatic deference to perceived authority | Impersonate executives or regulators |
+
+## Defensive Training Design
+
+### Effective Security Awareness Elements
+
+1. **Scenario-based training**: Real-world attack simulations, not just slides
+2. **Emotional engagement**: Show impact of successful attacks on real people
+3. **Positive reinforcement**: Reward reporting, never punish victimization
+4. **Spaced repetition**: Regular micro-training, not annual marathon
+5. **Role-specific content**: Tailor to job function and risk level
+6. **Metrics that matter**: Track reporting rates, not just click rates
+
+### Attack Vector Psychology Mapping
+
+| Vector | Primary Psychological Triggers |
+|--------|-------------------------------|
+| Phishing | Urgency, authority, fear of loss |
+| Vishing | Authority, real-time pressure, empathy |
+| Pretexting | Trust, liking, reciprocity |
+| Tailgating | Courtesy, social norms, conflict avoidance |
+| Baiting | Curiosity, greed, scarcity |
+| Quid pro quo | Reciprocity, helpfulness |
+
+### Reporting Culture
+
+The goal is not zero clicks but 100% reporting. A phishing email that is clicked AND reported within minutes is a success of the security program. Punishing victims drives concealment, not prevention.
+
+## Cross-References
+
+- See `reference/psychology/security-culture-psychology.md` for culture building
+- See `reference/psychology/adversary-mindset-training.md` for offensive thinking
+- See `frameworks/phishing-simulation-methodology.md` for simulation design
+- See `reference/psychology/decision-making-under-pressure.md` for cognitive bias awareness
+- See `templates/runbooks/phishing-response-runbook.md` for response procedures
