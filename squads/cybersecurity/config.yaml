@@ -1,0 +1,587 @@
+# ============================================================
+# CYBERSECURITY SQUAD — config.yaml (Cerebro de Roteamento)
+# ============================================================
+
+squad:
+  name: cybersecurity
+  version: "1.0.0"
+  description: "Red Team + Blue Team + AppSec + CloudSec + IR Squad do MMOS"
+  chief_agent: cyber-chief
+
+principles:
+  - authorized-only          # Nada sem autorizacao explicita
+  - evidence-first           # Tudo com prova e rastreabilidade
+  - minimize-impact          # Minimo dano, minima alteracao
+  - reproducible-results     # Resultados reproduziveis e verificaveis
+  - fix-over-fear            # Foco em consertar, nao em assustar
+
+# ============================================================
+# AGENTS
+# ============================================================
+
+agents:
+  core:
+    - peter-kim              # Red Team pragmatico
+    - georgia-weidman        # Pentest hands-on
+    - jim-manico             # AppSec/OWASP
+    - chris-sanders          # NSM/DFIR
+    - omar-santos            # Blue Team/CyberOps
+    - marcus-carey           # Cultura e operacao
+
+  special:
+    - cyber-chief            # Orquestrador
+    - command-generator      # Gerador de comandos seguros
+    - cartographer           # Mapeador de superficie
+    - busterer               # Descoberta/enumeracao
+    - dirber                 # Enumeracao web
+    - fuzzer                 # Fuzzing
+    - ripper                 # Auditoria de credenciais
+    - rogue                  # Adversary simulado
+    - shannon-runner         # Entropy/anomaly runner
+
+# ============================================================
+# ROUTING: Para cada TASK, quais AGENTS, FRAMEWORKS,
+# CHECKLISTS, TEMPLATES e REGISTRIES sao obrigatorios
+# ============================================================
+
+routing:
+
+  # ---- INTAKE ----
+  collect-authorization-and-roe:
+    agents: [cyber-chief]
+    frameworks: [ptes-penetration-testing]
+    checklists: [scope-and-roe-quality]
+    templates: [briefs/pentest-roe-template, briefs/security-assessment-brief]
+    registry: [data/registries/decisions-log]
+
+  define-success-criteria:
+    agents: [cyber-chief]
+    frameworks: [governance-layer]
+    checklists: [scope-and-roe-quality]
+    templates: [briefs/security-assessment-brief]
+    registry: [data/registries/decisions-log]
+
+  setup-comms-and-escalation:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [governance-layer]
+    checklists: [carey/carey-communication-under-pressure]
+    templates: [communications/incident-notification-template]
+    registry: [data/registries/decisions-log]
+
+  asset-scoping:
+    agents: [cyber-chief, cartographer]
+    frameworks: [discovery-layer]
+    checklists: [asset-inventory-quality]
+    templates: [trackers/asset-inventory-tracker]
+    registry: [data/registries/asset-registry]
+
+  risk-context-gathering:
+    agents: [cyber-chief]
+    frameworks: [fair-risk-quantification, governance-layer]
+    checklists: [scope-and-roe-quality]
+    templates: [briefs/security-assessment-brief]
+    registry: [data/registries/risk-register]
+
+  # ---- DISCOVERY ----
+  asset-discovery:
+    agents: [cartographer, cyber-chief]
+    frameworks: [discovery-layer]
+    checklists: [asset-inventory-quality]
+    templates: [trackers/asset-inventory-tracker]
+    registry: [data/registries/asset-registry]
+
+  attack-surface-mapping:
+    agents: [cartographer, busterer, dirber, peter-kim]
+    frameworks: [discovery-layer, mitre-att-ck]
+    checklists: [attack-surface-mapping-quality, kim/kim-recon-checklist]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  threat-modeling:
+    agents: [jim-manico, cyber-chief]
+    frameworks: [stride-threat-model, pasta-threat-model, appsec-layer]
+    checklists: [threat-model-quality, manico/manico-owasp-top10-mapping]
+    templates: [briefs/threat-model-brief, reports/threat-model-report-template]
+    registry: [data/registries/risk-register]
+
+  logging-and-visibility-gap-audit:
+    agents: [chris-sanders, omar-santos]
+    frameworks: [defense-layer, detection-coverage-matrix]
+    checklists: [blue-team/blueteam-logging-coverage, santos/santos-visibility-matrix]
+    templates: [trackers/detection-coverage-tracker]
+    registry: [data/registries/detection-rules-registry]
+
+  identity-and-privilege-mapping:
+    agents: [cartographer, omar-santos]
+    frameworks: [identity-layer, zero-trust-architecture]
+    checklists: [identity-and-ad-assessment-quality, cloud/cloud-iam-least-privilege]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/asset-registry]
+
+  data-flow-mapping:
+    agents: [cartographer, jim-manico]
+    frameworks: [discovery-layer, appsec-layer]
+    checklists: [threat-model-quality]
+    templates: [reports/threat-model-report-template]
+    registry: [data/registries/asset-registry]
+
+  # ---- RED TEAM ----
+  recon-and-enumeration:
+    agents: [peter-kim, busterer, dirber, cartographer]
+    frameworks: [offense-layer, ptes-penetration-testing]
+    checklists: [kim/kim-recon-checklist, red-team/redteam-safe-testing-rules]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  vuln-validation:
+    agents: [georgia-weidman, peter-kim, fuzzer]
+    frameworks: [offense-layer, risk-scoring-model]
+    checklists: [vuln-assessment-quality, weidman/weidman-exploitation-validation, evidence-chain-quality]
+    templates: [reports/finding-template, reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  safe-exploitation-simulation:
+    agents: [rogue, georgia-weidman, peter-kim]
+    frameworks: [offense-layer, lockheed-martin-kill-chain]
+    checklists: [pentest-execution-quality, weidman/weidman-post-exploit-safety, red-team/redteam-safe-testing-rules]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  lateral-movement-hypothesis:
+    agents: [rogue, peter-kim]
+    frameworks: [lateral-movement-methodology, mitre-att-ck]
+    checklists: [red-team/redteam-attack-chain-review, kim/kim-network-pivoting-audit]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  privilege-escalation-testing:
+    agents: [georgia-weidman, rogue]
+    frameworks: [privilege-escalation-methodology]
+    checklists: [weidman/weidman-privilege-escalation-audit, red-team/redteam-safe-testing-rules]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  credential-attack-testing:
+    agents: [ripper, peter-kim]
+    frameworks: [credential-attack-methodology]
+    checklists: [kim/kim-attack-path-prioritization, red-team/redteam-safe-testing-rules]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  social-engineering-campaign:
+    agents: [rogue, marcus-carey]
+    frameworks: [phishing-simulation-methodology]
+    checklists: [social-engineering-assessment-quality, carey/carey-ethical-boundaries]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  report-findings:
+    agents: [peter-kim, cyber-chief]
+    frameworks: [finding-structure-standard, risk-scoring-model]
+    checklists: [security-report-quality, kim/kim-proof-and-reporting, evidence-chain-quality]
+    templates: [reports/technical-report-template, reports/executive-summary-template]
+    registry: [data/registries/findings-registry]
+
+  # ---- APPSEC ----
+  secure-code-review:
+    agents: [jim-manico, command-generator]
+    frameworks: [owasp-asvs, appsec-layer, nist-ssdf]
+    checklists: [code-review-security-quality, manico/manico-secure-coding-review, manico/manico-authn-authz-audit]
+    templates: [reports/finding-template, reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  api-security-review:
+    agents: [jim-manico, fuzzer]
+    frameworks: [owasp-api-top-10, api-security-testing-methodology]
+    checklists: [api-security-assessment-quality, appsec/appsec-api-security-gate]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  sdlc-security-gates-setup:
+    agents: [jim-manico, cyber-chief]
+    frameworks: [owasp-samm, nist-ssdf, appsec-layer]
+    checklists: [manico/manico-ssdlc-gates]
+    templates: [policies/secure-sdlc-policy]
+    registry: [data/registries/decisions-log]
+
+  secrets-management-hardening:
+    agents: [jim-manico, omar-santos]
+    frameworks: [appsec-layer]
+    checklists: [appsec/appsec-secrets-management]
+    templates: [reports/remediation-plan-template]
+    registry: [data/registries/remediation-registry]
+
+  dependency-security-audit:
+    agents: [jim-manico, command-generator]
+    frameworks: [supply-chain-attack-defense]
+    checklists: [appsec/appsec-supply-chain, supply-chain-security-quality]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  security-champion-onboarding:
+    agents: [jim-manico, marcus-carey]
+    frameworks: [security-champion-program]
+    checklists: [carey/carey-security-culture-audit]
+    templates: [reports/security-posture-report-template]
+    registry: [data/registries/decisions-log]
+
+  threat-model-workshop:
+    agents: [jim-manico, cyber-chief]
+    frameworks: [stride-threat-model, pasta-threat-model]
+    checklists: [threat-model-quality]
+    templates: [briefs/threat-model-brief, reports/threat-model-report-template]
+    registry: [data/registries/risk-register]
+
+  # ---- CLOUDSEC ----
+  iam-least-privilege-project:
+    agents: [omar-santos, cyber-chief]
+    frameworks: [cloudsec-layer, zero-trust-architecture]
+    checklists: [cloud/cloud-iam-least-privilege, cloud-security-assessment-quality]
+    templates: [reports/finding-template, reports/remediation-plan-template]
+    registry: [data/registries/findings-registry, data/registries/remediation-registry]
+
+  storage-exposure-audit:
+    agents: [omar-santos, cartographer]
+    frameworks: [cloudsec-layer]
+    checklists: [cloud/cloud-storage-exposure]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  cloud-logging-setup:
+    agents: [omar-santos, chris-sanders]
+    frameworks: [cloudsec-layer, defense-layer]
+    checklists: [cloud/cloud-logging-and-trails, santos/santos-soc-readiness]
+    templates: [policies/logging-retention-policy-template]
+    registry: [data/registries/decisions-log]
+
+  network-segmentation-review:
+    agents: [omar-santos, cartographer]
+    frameworks: [cloudsec-layer, zero-trust-architecture]
+    checklists: [cloud/cloud-network-segmentation]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  cloud-guardrails-setup:
+    agents: [omar-santos, cyber-chief]
+    frameworks: [cloudsec-layer, governance-layer]
+    checklists: [cloud/cloud-multi-account-security]
+    templates: [policies/access-control-policy-template]
+    registry: [data/registries/decisions-log]
+
+  multi-cloud-security-review:
+    agents: [omar-santos, cartographer]
+    frameworks: [cloudsec-layer, cloud-identity-attack-defense]
+    checklists: [cloud-security-assessment-quality, cloud/cloud-serverless-container-security]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  # ---- BLUE TEAM ----
+  detection-coverage-mapping:
+    agents: [chris-sanders, omar-santos, shannon-runner]
+    frameworks: [detection-coverage-matrix, mitre-att-ck, mitre-d3fend]
+    checklists: [blue-team/blueteam-detection-coverage, detection-engineering-quality]
+    templates: [trackers/detection-coverage-tracker]
+    registry: [data/registries/detection-rules-registry]
+
+  detection-rule-development:
+    agents: [chris-sanders, shannon-runner, command-generator]
+    frameworks: [defense-layer, detection-coverage-matrix]
+    checklists: [detection-engineering-quality, blue-team/blueteam-tuning-checklist]
+    templates: [runbooks/detection-rule-template]
+    registry: [data/registries/detection-rules-registry]
+
+  threat-hunting-sprint:
+    agents: [chris-sanders, rogue, shannon-runner]
+    frameworks: [mitre-att-ck, diamond-model]
+    checklists: [threat-hunt-quality, sanders/sanders-packet-analysis]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  soc-operations-improvement:
+    agents: [omar-santos, chris-sanders, marcus-carey]
+    frameworks: [defense-layer, security-kpi-dashboard]
+    checklists: [santos/santos-soc-readiness, santos/santos-alert-triage, blue-team/blueteam-monitoring-slo]
+    templates: [reports/security-posture-report-template]
+    registry: [data/registries/decisions-log]
+
+  purple-team-exercise:
+    agents: [rogue, chris-sanders, peter-kim]
+    frameworks: [purple-team-method, mitre-att-ck]
+    checklists: [purple-team-exercise-quality, red-team/redteam-deconfliction-checklist]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry, data/registries/detection-rules-registry]
+
+  tabletop-exercise-facilitation:
+    agents: [marcus-carey, cyber-chief]
+    frameworks: [ir-layer]
+    checklists: [tabletop-exercise-quality, carey/carey-communication-under-pressure]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/lessons-learned-registry]
+
+  # ---- INCIDENT RESPONSE ----
+  triage-and-severity:
+    agents: [chris-sanders, omar-santos, cyber-chief]
+    frameworks: [nist-800-61-incident-response, ir-layer]
+    checklists: [incident-triage-quality, incident-response/ir-triage-and-severity]
+    templates: [briefs/incident-intake-template]
+    registry: [data/registries/incident-registry]
+
+  containment-actions:
+    agents: [omar-santos, chris-sanders, cyber-chief]
+    frameworks: [nist-800-61-incident-response, ir-layer]
+    checklists: [incident-response/ir-containment-checklist, sanders/sanders-evidence-integrity]
+    templates: [communications/incident-notification-template]
+    registry: [data/registries/incident-registry]
+
+  eradication-and-recovery:
+    agents: [omar-santos, chris-sanders]
+    frameworks: [nist-800-61-incident-response, ir-layer]
+    checklists: [incident-response/ir-eradication-recovery]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
+  evidence-collection:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [evidence-standard]
+    checklists: [forensics-collection-quality, evidence-chain-quality, sanders/sanders-evidence-integrity]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
+  postmortem-and-actions:
+    agents: [marcus-carey, cyber-chief]
+    frameworks: [ir-layer]
+    checklists: [carey/carey-lessons-learned, carey/carey-communication-under-pressure]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry, data/registries/lessons-learned-registry]
+
+  incident-communication:
+    agents: [marcus-carey, cyber-chief]
+    frameworks: [ir-layer, governance-layer]
+    checklists: [incident-response/ir-communication-escalation, carey/carey-communication-under-pressure]
+    templates: [communications/incident-notification-template, communications/incident-external-comms-template]
+    registry: [data/registries/incident-registry]
+
+  # ---- REVIEW ----
+  findings-review:
+    agents: [cyber-chief, peter-kim, jim-manico]
+    frameworks: [finding-structure-standard, risk-scoring-model]
+    checklists: [security-report-quality, evidence-chain-quality]
+    templates: [reports/technical-report-template, reports/executive-summary-template]
+    registry: [data/registries/findings-registry]
+
+  report-executive-review:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [governance-layer]
+    checklists: [security-report-quality]
+    templates: [reports/executive-summary-template]
+    registry: [data/registries/decisions-log]
+
+  remediation-plan-review:
+    agents: [cyber-chief, omar-santos]
+    frameworks: [vuln-triage-playbook]
+    checklists: [remediation-plan-quality]
+    templates: [reports/remediation-plan-template]
+    registry: [data/registries/remediation-registry]
+
+  detection-rule-review:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [detection-coverage-matrix]
+    checklists: [detection-engineering-quality, blue-team/blueteam-tuning-checklist]
+    templates: [runbooks/detection-rule-template]
+    registry: [data/registries/detection-rules-registry]
+
+  policy-review:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [governance-layer]
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template]
+    registry: [data/registries/decisions-log]
+
+  architecture-security-review:
+    agents: [cyber-chief, jim-manico, omar-santos]
+    frameworks: [zero-trust-architecture, appsec-layer, cloudsec-layer]
+    checklists: [threat-model-quality, cloud-security-assessment-quality]
+    templates: [reports/threat-model-report-template]
+    registry: [data/registries/risk-register]
+
+  # ---- ANALYSIS ----
+  security-posture-analysis:
+    agents: [cyber-chief, omar-santos, marcus-carey]
+    frameworks: [security-kpi-dashboard, governance-layer]
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template, reports/quarterly-security-report-template]
+    registry: [data/metrics/security-kpis]
+
+  trend-analysis-vuln-backlog:
+    agents: [cyber-chief, omar-santos]
+    frameworks: [vuln-triage-playbook, security-kpi-dashboard]
+    checklists: [remediation-plan-quality]
+    templates: [trackers/vuln-backlog-template, trackers/remediation-sla-tracker]
+    registry: [data/metrics/vulnerability-metrics]
+
+  detection-effectiveness-analysis:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [detection-coverage-matrix, security-kpi-dashboard]
+    checklists: [blue-team/blueteam-detection-coverage, blue-team/blueteam-monitoring-slo]
+    templates: [trackers/detection-coverage-tracker]
+    registry: [data/metrics/detection-metrics]
+
+  attack-path-analysis:
+    agents: [peter-kim, rogue, cartographer]
+    frameworks: [mitre-att-ck, offense-layer]
+    checklists: [kim/kim-attack-path-prioritization, red-team/redteam-attack-chain-review]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  threat-landscape-analysis:
+    agents: [cyber-chief, rogue]
+    frameworks: [mitre-att-ck, mitre-atlas]
+    checklists: [threat-hunt-quality]
+    templates: [reports/risk-assessment-report-template]
+    registry: [data/metrics/security-kpis]
+
+  maturity-assessment:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [red-team-maturity-model, security-kpi-dashboard, governance-layer]
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template]
+    registry: [data/metrics/maturity-score-history]
+
+  roi-security-investment-analysis:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [fair-risk-quantification, governance-layer]
+    checklists: []
+    templates: [reports/quarterly-security-report-template]
+    registry: [data/metrics/security-kpis]
+
+  # ---- OPERATIONS ----
+  maintain-checklists-and-standards:
+    agents: [cyber-chief]
+    frameworks: [governance-layer]
+    checklists: []
+    templates: []
+    registry: [data/registries/decisions-log]
+
+  toolchain-maintenance:
+    agents: [command-generator, cyber-chief]
+    frameworks: []
+    checklists: []
+    templates: []
+    registry: [data/registries/decisions-log]
+
+  quarterly-security-review:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [governance-layer, security-kpi-dashboard]
+    checklists: []
+    templates: [reports/quarterly-security-report-template]
+    registry: [data/metrics/security-kpis, data/registries/decisions-log]
+
+  cross-squad-sync:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [governance-layer]
+    checklists: []
+    templates: []
+    registry: [data/registries/decisions-log]
+
+  create-new-agent:
+    agents: [cyber-chief]
+    frameworks: []
+    checklists: []
+    templates: []
+    registry: [data/registries/decisions-log]
+
+  swipe-file-curation:
+    agents: [cyber-chief]
+    frameworks: []
+    checklists: []
+    templates: []
+    registry: []
+
+  update-threat-intelligence:
+    agents: [rogue, shannon-runner]
+    frameworks: [mitre-att-ck]
+    checklists: []
+    templates: []
+    registry: [data/registries/findings-registry]
+
+  security-metrics-reporting:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [security-kpi-dashboard]
+    checklists: []
+    templates: [reports/quarterly-security-report-template]
+    registry: [data/metrics/security-kpis]
+
+# ============================================================
+# CROSS-SQUAD INTEGRATION
+# ============================================================
+
+cross_squad:
+  dev_squad:
+    handoff_from_cyber:
+      - "findings -> dev backlog (com prioridade e SLA)"
+      - "secure-coding-guidelines -> dev/reference/"
+      - "sdlc-gates -> dev/workflows/"
+    shared_assets:
+      - threat-models
+      - security-requirements
+
+  infra_squad:
+    handoff_from_cyber:
+      - "hardening-baselines -> infra/standards/"
+      - "detection-rules -> infra/monitoring/"
+      - "cloud-guardrails -> infra/policies/"
+    shared_assets:
+      - asset-inventory
+      - network-diagrams
+
+  compliance_squad:
+    handoff_from_cyber:
+      - "evidence-packages -> compliance/evidence/"
+      - "control-mappings -> compliance/frameworks/"
+      - "risk-register -> compliance/risk/"
+
+# ============================================================
+# QUALITY GATES (minimos para qualquer output)
+# ============================================================
+
+quality_gates:
+  mandatory:
+    - scope-and-roe-quality
+    - evidence-chain-quality
+    - security-report-quality
+  per_domain:
+    red_team: [pentest-execution-quality, red-team/redteam-safe-testing-rules]
+    appsec: [code-review-security-quality, manico/manico-ssdlc-gates]
+    blue_team: [detection-engineering-quality, blue-team/blueteam-detection-coverage]
+    ir: [incident-triage-quality, forensics-collection-quality]
+    cloudsec: [cloud-security-assessment-quality, cloud/cloud-iam-least-privilege]
+
+# ============================================================
+# KPIs
+# ============================================================
+
+kpis:
+  - mttd                      # Mean Time to Detect
+  - mttr                      # Mean Time to Respond
+  - vuln_sla_compliance       # % de vulns corrigidas dentro do SLA
+  - detection_coverage        # % de tecnicas ATT&CK com deteccao ativa
+  - false_positive_rate       # Taxa de falsos positivos
+  - mean_time_to_remediate    # Tempo medio de remediacao
+  - security_maturity_score   # Score de maturidade
+  - critical_vuln_backlog     # Backlog de vulns criticas
+  - tabletop_frequency        # Frequencia de exercicios tabletop
+  - security_champion_coverage # % de dev teams com security champion
+
+# ============================================================
+# DEFAULTS
+# ============================================================
+
+defaults:
+  review_agent: cyber-chief
+  min_checklists: 2
+  registry_on_completion: true
+  output_format: markdown
+  evidence_hashing: sha256
+  opsec_level: standard
+  language: pt-br
+  technical_terms: en
