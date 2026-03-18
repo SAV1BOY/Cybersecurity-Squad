@@ -39,3 +39,19 @@ Conduzir analise postmortem do incidente, extraindo lessons learned e definindo 
 - [ ] Metricas do incidente registradas (MTTD, MTTR)
 - [ ] Checklist `carey-lessons-learned` atendido
 - [ ] Checklist `carey-communication-under-pressure` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | ir-layer |
+| Checklists | carey/carey-lessons-learned, carey/carey-communication-under-pressure |
+| Templates | reports/postmortem-template |
+| Registry | data/registries/incident-registry, data/registries/lessons-learned-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: eradication-and-recovery + evidence-collection
+- **Delivers to**: improvement-backlog

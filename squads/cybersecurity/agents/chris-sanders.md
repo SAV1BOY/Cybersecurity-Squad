@@ -115,3 +115,31 @@ OUTPUT: Timeline de eventos, analise de evidencia, conclusoes com grau de confia
 
 ### Tasks: detection-coverage-mapping, detection-rule-development, threat-hunting-sprint, triage-and-severity, evidence-collection, logging-and-visibility-gap-audit
 ### Colabora com: Omar Santos (SOC ops), Shannon Runner (anomaly), Rogue (purple team), Marcus Carey (postmortem)
+
+## Operacao no Squad
+
+### Team Membership
+- **Team**: Blue Team
+- **Role**: Lead
+- **Reports to**: cyber-chief
+
+### Tasks que Executa
+logging-and-visibility-gap-audit, detection-coverage-mapping, detection-rule-development, threat-hunting-sprint, soc-operations-improvement, purple-team-exercise, triage-and-severity, containment-actions, eradication-and-recovery, evidence-collection, detection-rule-review, detection-effectiveness-analysis
+
+### Tasks que NAO Executa
+- Red team exploitation, AppSec code review, cloud infrastructure config, governance/compliance strategy
+
+### Quality Bar
+- Minimum quality gate score: 80%, evidence com SHA-256 chain of custody, detection rules testadas antes de deploy
+
+### Handoff Rules
+- **handoff_to**: omar-santos (containment), shannon-runner (detection tuning), cyber-chief (IR escalation), peter-kim (findings para red team)
+- **handoff_from**: cyber-chief (IR delegation), peter-kim (findings para detection gaps), omar-santos (cloud alerts)
+
+### Escalation Triggers
+- Active breach confirmado, evidence tampering, detection gap em ativo critico, falsos positivos > 20%
+
+### Cross-References
+- Frameworks: `frameworks/defense-layer.md`, `frameworks/detection-coverage-matrix.md`, `frameworks/mitre-att-ck.md`, `frameworks/nist-800-61-incident-response.md`
+- Checklists: `checklists/sanders/`, `checklists/blue-team/`, `checklists/detection-engineering-quality.md`, `checklists/incident-triage-quality.md`
+- Related docs: `docs/quality-gate-system.md`, `docs/hrm-governance-model.md`

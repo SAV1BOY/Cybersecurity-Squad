@@ -38,3 +38,19 @@ Revisar planos de remediacao propostos, validando viabilidade tecnica, priorizac
 - [ ] Mitigacoes temporarias para criticals definidas
 - [ ] Responsaveis e deadlines atribuidos
 - [ ] Checklist `remediation-plan-quality` 100% atendido
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | vuln-triage-playbook |
+| Checklists | remediation-plan-quality |
+| Templates | reports/remediation-plan-template |
+| Registry | data/registries/remediation-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: findings with remediation
+- **Delivers to**: dev/infra squad (cross-squad handoff)

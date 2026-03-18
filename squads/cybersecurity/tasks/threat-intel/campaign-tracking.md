@@ -202,3 +202,18 @@ When campaign activity ceases:
 - `tasks/threat-intel/vulnerability-intelligence.md` — CVE exploitation in campaigns
 - `workflows/threat-hunting-sprint-workflow.md` — Hunt operations
 - `workflows/incident-response-workflow.md` — Campaign-related incident handling
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | mitre-att-ck, mitre-atlas |
+| Checklists | threat-hunt-quality |
+| Templates | reports/technical-report-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: rogue + shannon-runner

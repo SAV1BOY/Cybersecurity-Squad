@@ -39,3 +39,11 @@ Realizar revisao de seguranca do codigo-fonte de aplicacoes in-scope, identifica
 - [ ] Findings tem code snippets e recomendacoes de fix
 - [ ] Checklist `code-review-security-quality` atendido
 - [ ] Checklist `manico-secure-coding-review` validado
+
+## Routing & Escalation
+- **frameworks**: owasp-asvs, appsec-layer, nist-ssdf
+- **checklists**: code-review-security-quality, manico/manico-secure-coding-review, manico/manico-authn-authz-audit
+- **templates**: reports/finding-template, reports/technical-report-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: dev squad code review request
+- **delivers_to**: findings-review

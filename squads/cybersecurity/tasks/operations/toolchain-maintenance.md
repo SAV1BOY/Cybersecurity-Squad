@@ -37,3 +37,19 @@ Manter o toolchain de seguranca do squad atualizado, funcional e seguro, garanti
 - [ ] Atualizacoes testadas antes de deploy em producao
 - [ ] Documentacao de configuracao atualizada
 - [ ] Licencas e renovacoes verificadas
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | santos/santos-soc-readiness |
+| Templates | reports/remediation-plan-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: quarterly review
+- **Delivers to**: updated toolchain docs

@@ -39,3 +39,11 @@ Mapear a cobertura de deteccao atual contra o framework MITRE ATT&CK, identifica
 - [ ] Data sources necessarios identificados para fechar gaps
 - [ ] Checklist `blueteam-detection-coverage` atendido
 - [ ] Checklist `detection-engineering-quality` validado
+
+## Routing & Escalation
+- **frameworks**: detection-coverage-matrix, mitre-att-ck, mitre-d3fend
+- **checklists**: blue-team/blueteam-detection-coverage, detection-engineering-quality
+- **templates**: trackers/detection-coverage-tracker
+- **registry**: data/registries/detection-rules-registry
+- **receives_from**: logging-and-visibility-gap-audit
+- **delivers_to**: detection-rule-development

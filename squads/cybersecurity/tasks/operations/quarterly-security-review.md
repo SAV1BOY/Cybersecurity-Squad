@@ -38,3 +38,19 @@ Conduzir revisao trimestral de seguranca, consolidando metricas, avaliando progr
 - [ ] Top wins e top risks identificados
 - [ ] Prioridades do proximo trimestre acordadas
 - [ ] Relatorio adequado para audiencia executiva
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer, security-kpi-dashboard |
+| Checklists | compliance-audit-quality |
+| Templates | reports/quarterly-security-report-template |
+| Registry | data/metrics/security-kpis, data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: quarterly cadence
+- **Delivers to**: stakeholders

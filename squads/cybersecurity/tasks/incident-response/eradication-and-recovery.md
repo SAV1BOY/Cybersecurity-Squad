@@ -39,3 +39,19 @@ Erradicar a causa raiz do incidente e restaurar sistemas afetados a um estado op
 - [ ] IOCs ausentes apos erradicacao (scan de validacao)
 - [ ] Monitoramento intensivo ativo pos-recovery
 - [ ] Checklist `ir-eradication-recovery` 100% atendido
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | nist-800-61-incident-response, ir-layer |
+| Checklists | incident-response/ir-eradication-recovery |
+| Templates | reports/postmortem-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: containment-actions
+- **Delivers to**: evidence-collection

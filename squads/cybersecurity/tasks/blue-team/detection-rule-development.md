@@ -40,3 +40,11 @@ Desenvolver, testar e implementar novas regras de deteccao para fechar gaps iden
 - [ ] Performance monitorada apos deploy em producao
 - [ ] Checklist `detection-engineering-quality` atendido
 - [ ] Checklist `blueteam-tuning-checklist` validado
+
+## Routing & Escalation
+- **frameworks**: defense-layer, detection-coverage-matrix
+- **checklists**: detection-engineering-quality, blue-team/blueteam-tuning-checklist
+- **templates**: runbooks/detection-rule-template
+- **registry**: data/registries/detection-rules-registry
+- **receives_from**: detection-coverage-mapping
+- **delivers_to**: detection-rule-review

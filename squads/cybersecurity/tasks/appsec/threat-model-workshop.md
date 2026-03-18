@@ -39,3 +39,11 @@ Facilitar workshops colaborativos de threat modeling com equipes de desenvolvime
 - [ ] Mitigacoes tem responsaveis e timeline definidos
 - [ ] Threat model documentado e armazenado
 - [ ] Checklist `threat-model-quality` 100% atendido
+
+## Routing & Escalation
+- **frameworks**: stride-threat-model, pasta-threat-model
+- **checklists**: threat-model-quality
+- **templates**: briefs/threat-model-brief, reports/threat-model-report-template
+- **registry**: data/registries/risk-register
+- **receives_from**: sdlc-security-gates or new system review
+- **delivers_to**: secure-code-review

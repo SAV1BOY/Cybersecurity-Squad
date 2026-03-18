@@ -38,3 +38,19 @@ Analisar o retorno sobre investimento em seguranca, quantificando o valor de con
 - [ ] ROI calculado por investimento relevante
 - [ ] Projecoes de ROI futuro com premissas claras
 - [ ] Relatorio adequado para audiencia executiva
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | fair-risk-quantification, governance-layer |
+| Checklists | — |
+| Templates | reports/quarterly-security-report-template |
+| Registry | data/metrics/security-kpis |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: quarterly cadence
+- **Delivers to**: cyber-chief / stakeholders

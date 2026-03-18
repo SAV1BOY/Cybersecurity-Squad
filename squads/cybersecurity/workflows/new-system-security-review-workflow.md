@@ -17,7 +17,7 @@ Garantir que todo novo sistema passe por uma avaliacao de seguranca adequada ant
 
 ### 1. Intake e Classification
 
-- Responsavel: **Review Intake Agent**
+- Responsavel: **cyber-chief**
 - Receber formulario de solicitacao de review
 - Classificar o sistema por criticidade (tier 1, 2 ou 3)
 - Ponto de decisao: **Classificacao de risco do sistema?**
@@ -27,28 +27,28 @@ Garantir que todo novo sistema passe por uma avaliacao de seguranca adequada ant
 
 ### 2. Documentation Review
 
-- Responsavel: **Security Architect Agent**
+- Responsavel: **jim-manico**
 - Revisar arquitetura e identificar componentes de risco
 - Analisar data flows e classificacao de dados
 - Verificar integracao com sistemas existentes
 
 ### 3. Threat Modeling
 
-- Responsavel: **Threat Model Lead Agent**
+- Responsavel: **peter-kim**
 - Conduzir threat model baseado na arquitetura
 - Identificar ameacas especificas ao novo sistema
 - Priorizar riscos para avaliacao detalhada
 
 ### 4. Security Requirements Validation
 
-- Responsavel: **Security Architect Agent**
+- Responsavel: **jim-manico**
 - Verificar compliance com security baseline da organizacao
 - Validar autenticacao, autorizacao, encryption e logging
 - Confirmar que requisitos regulatorios estao atendidos
 
 ### 5. Technical Assessment
 
-- Responsavel: **AppSec Agent** ou **Infra Security Agent**
+- Responsavel: **jim-manico** ou **omar-santos**
 - Executar vulnerability scan e configuration review
 - Testar controles de seguranca implementados
 - Ponto de decisao: **Vulnerabilidades criticas encontradas?**
@@ -57,14 +57,14 @@ Garantir que todo novo sistema passe por uma avaliacao de seguranca adequada ant
 
 ### 6. Third-Party Risk Assessment (se aplicavel)
 
-- Responsavel: **Third Party Risk Agent**
+- Responsavel: **cyber-chief**
 - Avaliar postura de seguranca de vendors envolvidos
 - Revisar contratos e clausulas de seguranca
 - Verificar certificacoes e auditorias do vendor
 
 ### 7. Review Decision
 
-- Responsavel: **Security Review Board**
+- Responsavel: **cyber-chief + jim-manico**
 - Consolidar findings de todas as avaliacoes
 - Ponto de decisao: **Sistema aprovado para producao?**
   - Aprovado -> emitir clearance com condicoes se necessario
@@ -73,7 +73,7 @@ Garantir que todo novo sistema passe por uma avaliacao de seguranca adequada ant
 
 ### 8. Post-Launch Monitoring
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Configurar monitoramento e alertas de seguranca
 - Programar vulnerability scan recorrente
 - Agendar review de follow-up em 90 dias
@@ -93,3 +93,27 @@ Garantir que todo novo sistema passe por uma avaliacao de seguranca adequada ant
 - Lista de findings e recomendacoes
 - Clearance document (se aprovado)
 - Plano de monitoramento pos-launch
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

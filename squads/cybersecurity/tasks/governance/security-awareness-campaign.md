@@ -148,3 +148,18 @@ For employees who fail phishing simulations repeatedly:
 - `docs/onboarding-security-analyst.md` — New hire awareness training
 - `frameworks/phishing-simulation-methodology.md` — Phishing simulation details
 - `tasks/governance/security-policy-review.md` — Policy awareness requirements
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: cyber-chief + marcus-carey

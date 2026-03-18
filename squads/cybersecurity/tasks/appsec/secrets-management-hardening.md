@@ -38,3 +38,11 @@ Fortalecer o gerenciamento de secrets (senhas, API keys, tokens, certificados) e
 - [ ] Politica de rotacao definida por tipo de secret
 - [ ] Alertas de secret exposure configurados
 - [ ] Checklist `appsec-secrets-management` 100% atendido
+
+## Routing & Escalation
+- **frameworks**: appsec-layer
+- **checklists**: appsec/appsec-secrets-management
+- **templates**: reports/remediation-plan-template
+- **registry**: data/registries/remediation-registry
+- **receives_from**: code review or cloud audit findings
+- **delivers_to**: remediation-plan-review

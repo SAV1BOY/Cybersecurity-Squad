@@ -40,3 +40,19 @@ Executar acoes de contencao para limitar o impacto do incidente, impedindo a pro
 - [ ] Stakeholders comunicados sobre status
 - [ ] Checklist `ir-containment-checklist` atendido
 - [ ] Checklist `sanders-evidence-integrity` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | nist-800-61-incident-response, ir-layer |
+| Checklists | incident-response/ir-containment-checklist, sanders/sanders-evidence-integrity |
+| Templates | communications/incident-notification-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: triage-and-severity
+- **Delivers to**: eradication-and-recovery

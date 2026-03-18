@@ -38,3 +38,19 @@ Coletar e formalizar toda a documentacao de autorizacao e Rules of Engagement an
 - [ ] NDA executado antes de qualquer compartilhamento de informacao
 - [ ] Documento versionado e armazenado em repositorio seguro
 - [ ] Checklist `scope-and-roe-quality` 100% atendido
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | ptes-penetration-testing |
+| Checklists | scope-and-roe-quality |
+| Templates | briefs/pentest-roe-template, briefs/security-assessment-brief |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: external request
+- **Delivers to**: define-success-criteria

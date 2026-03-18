@@ -17,21 +17,21 @@ Identificar ameacas que escaparam dos controles de deteccao existentes, utilizan
 
 ### 1. Sprint Planning
 
-- Responsavel: **Hunt Lead Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Selecionar hipoteses para o sprint com base em threat intel
 - Definir escopo temporal e de dados para cada hunt
 - Alocar hunters e definir timebox por hipotese
 
 ### 2. Hypothesis Formulation
 
-- Responsavel: **Threat Hunter Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Estruturar hipotese no formato: "Se o adversario usou [tecnica], entao devemos observar [indicador] em [data source]"
 - Mapear a hipotese ao ATT&CK framework
 - Definir criterios de sucesso e metricas de cobertura
 
 ### 3. Data Collection e Exploration
 
-- Responsavel: **Threat Hunter Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Identificar e acessar data sources relevantes
 - Executar queries exploratarias para entender baseline
 - Ponto de decisao: **Dados suficientes para testar hipotese?**
@@ -40,7 +40,7 @@ Identificar ameacas que escaparam dos controles de deteccao existentes, utilizan
 
 ### 4. Analysis e Investigation
 
-- Responsavel: **Threat Hunter Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Executar queries analiticas para testar a hipotese
 - Investigar anomalias e outliers identificados
 - Ponto de decisao: **Atividade suspeita encontrada?**
@@ -49,21 +49,21 @@ Identificar ameacas que escaparam dos controles de deteccao existentes, utilizan
 
 ### 5. Finding Documentation
 
-- Responsavel: **Threat Hunter Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Documentar todas as descobertas com evidencias
 - Classificar findings como confirmed threat, suspicious activity ou informational
 - Recomendar novas detection rules baseadas nos resultados
 
 ### 6. Detection Rule Creation
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Converter findings em detection rules automatizadas
 - Testar rules conforme o detection engineering workflow
 - Deployar para prevenir recorrencia
 
 ### 7. Sprint Retrospective
 
-- Responsavel: **Hunt Lead Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Revisar metricas do sprint (hipoteses testadas, findings, rules criadas)
 - Coletar feedback dos hunters sobre tooling e data quality
 - Priorizar hipoteses para o proximo sprint
@@ -83,3 +83,27 @@ Identificar ameacas que escaparam dos controles de deteccao existentes, utilizan
 - Novas detection rules criadas ou propostas
 - Lista de gaps de visibilidade identificados
 - Hipoteses priorizadas para proximo sprint
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

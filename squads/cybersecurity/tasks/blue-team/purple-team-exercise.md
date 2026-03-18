@@ -39,3 +39,11 @@ Conduzir exercicio colaborativo Purple Team onde Red Team executa tecnicas e Blu
 - [ ] Detection coverage map atualizado pos-exercicio
 - [ ] Checklist `purple-team-exercise-quality` atendido
 - [ ] Checklist `redteam-deconfliction-checklist` validado
+
+## Routing & Escalation
+- **frameworks**: purple-team-method, mitre-att-ck
+- **checklists**: purple-team-exercise-quality, red-team/redteam-deconfliction-checklist
+- **templates**: reports/technical-report-template
+- **registry**: data/registries/findings-registry, data/registries/detection-rules-registry
+- **receives_from**: detection gaps identified
+- **delivers_to**: detection-rule-development

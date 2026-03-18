@@ -38,3 +38,11 @@ Integrar e capacitar Security Champions dentro das equipes de desenvolvimento, c
 - [ ] Canal de comunicacao com security squad estabelecido
 - [ ] Metricas de sucesso definidas e rastreadas
 - [ ] Checklist `carey-security-culture-audit` validado
+
+## Routing & Escalation
+- **frameworks**: security-champion-program
+- **checklists**: carey/carey-security-culture-audit
+- **templates**: reports/security-posture-report-template
+- **registry**: data/registries/decisions-log
+- **receives_from**: cyber-chief/marcus-carey initiative
+- **delivers_to**: dev squad

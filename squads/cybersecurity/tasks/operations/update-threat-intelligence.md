@@ -37,3 +37,19 @@ Atualizar a base de threat intelligence do squad com novos IOCs, TTPs, threat ac
 - [ ] Threat actor profiles atualizados com TTPs recentes
 - [ ] Gaps de deteccao para novas TTPs identificados
 - [ ] Intelligence disseminada para equipes operacionais
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | mitre-att-ck, mitre-atlas |
+| Checklists | threat-hunt-quality |
+| Templates | reports/technical-report-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: daily/weekly cadence
+- **Delivers to**: threat-hunting-sprint

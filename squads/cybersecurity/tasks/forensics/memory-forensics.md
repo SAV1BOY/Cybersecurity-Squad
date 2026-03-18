@@ -250,3 +250,18 @@ Document findings including:
 - `workflows/incident-response-workflow.md` — IR integration
 - `scripts/forensic-triage-scripts.md` — Automated triage including memory
 - `tasks/threat-intel/ioc-enrichment.md` — IOC processing from findings
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | evidence-standard, nist-800-61-incident-response |
+| Checklists | forensics-collection-quality, evidence-chain-quality |
+| Templates | reports/postmortem-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: chris-sanders + shannon-runner

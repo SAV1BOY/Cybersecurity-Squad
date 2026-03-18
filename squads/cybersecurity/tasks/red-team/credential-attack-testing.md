@@ -39,3 +39,19 @@ Testar a robustez dos controles de credenciais da organizacao, incluindo politic
 - [ ] Secrets em codigo/config identificados e reportados
 - [ ] Checklist `kim-attack-path-prioritization` atendido
 - [ ] Checklist `redteam-safe-testing-rules` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | credential-attack-methodology |
+| Checklists | kim/kim-attack-path-prioritization, red-team/redteam-safe-testing-rules |
+| Templates | reports/finding-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: recon-and-enumeration
+- **Delivers to**: report-findings

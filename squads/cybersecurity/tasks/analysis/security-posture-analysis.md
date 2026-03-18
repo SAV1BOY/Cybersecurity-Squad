@@ -39,3 +39,19 @@ Analisar a postura de seguranca geral da organizacao, consolidando metricas, fin
 - [ ] Trends identificados com contexto historico
 - [ ] Top risks mapeados com recomendacoes acionaveis
 - [ ] Checklist `compliance-audit-quality` atendido
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | security-kpi-dashboard, governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template, reports/quarterly-security-report-template |
+| Registry | data/metrics/security-kpis |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: monthly/quarterly cadence
+- **Delivers to**: cyber-chief decisions

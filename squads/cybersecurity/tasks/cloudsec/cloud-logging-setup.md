@@ -39,3 +39,11 @@ Configurar e validar logging abrangente em ambientes cloud, garantindo visibilid
 - [ ] Alertas de seguranca criticos configurados
 - [ ] Checklist `cloud-logging-and-trails` atendido
 - [ ] Checklist `santos-soc-readiness` validado
+
+## Routing & Escalation
+- **frameworks**: cloudsec-layer, defense-layer
+- **checklists**: cloud/cloud-logging-and-trails, santos/santos-soc-readiness
+- **templates**: policies/logging-retention-policy-template
+- **registry**: data/registries/decisions-log
+- **receives_from**: logging-and-visibility-gap-audit
+- **delivers_to**: detection-coverage-mapping

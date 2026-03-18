@@ -17,14 +17,14 @@ Manter visibilidade sobre quais tecnicas de ataque possuem deteccao ativa, ident
 
 ### 1. Coverage Assessment
 
-- Responsavel: **Coverage Analyst Agent**
+- Responsavel: **chris-sanders**
 - Mapear todas as detection rules existentes ao ATT&CK
 - Calcular porcentagem de cobertura por tactic e technique
 - Identificar tecnicas sem nenhuma deteccao (blind spots)
 
 ### 2. Gap Prioritization
 
-- Responsavel: **Threat Intel Agent**
+- Responsavel: **chris-sanders + rogue + shannon-runner**
 - Cruzar blind spots com threat intelligence relevante
 - Priorizar tecnicas usadas por adversarios que targetam o setor
 - Ponto de decisao: **Gap alinhado com ameaca ativa?**
@@ -33,7 +33,7 @@ Manter visibilidade sobre quais tecnicas de ataque possuem deteccao ativa, ident
 
 ### 3. Data Source Feasibility
 
-- Responsavel: **Data Engineer Agent**
+- Responsavel: **chris-sanders**
 - Verificar se os log sources necessarios existem para cada gap
 - Ponto de decisao: **Log source disponivel?**
   - Sim -> encaminhar para detection engineering
@@ -41,21 +41,21 @@ Manter visibilidade sobre quais tecnicas de ataque possuem deteccao ativa, ident
 
 ### 4. Detection Development
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Desenvolver rules para os gaps priorizados
 - Seguir o detection engineering workflow padrao
 - Testar e validar antes do deploy
 
 ### 5. Coverage Re-Assessment
 
-- Responsavel: **Coverage Analyst Agent**
+- Responsavel: **chris-sanders**
 - Recalcular metricas de cobertura apos novos deploys
 - Atualizar heat map de cobertura ATT&CK
 - Comparar evolucao com o assessment anterior
 
 ### 6. Reporting
 
-- Responsavel: **Metrics Agent**
+- Responsavel: **cyber-chief**
 - Gerar relatorio de cobertura para stakeholders
 - Incluir tendencia historica e metas para o proximo ciclo
 - Destacar melhorias e gaps remanescentes
@@ -79,3 +79,27 @@ Manter visibilidade sobre quais tecnicas de ataque possuem deteccao ativa, ident
 ## Loop Condition
 
 Este ciclo se repete a cada sprint de detection engineering ou quando nova threat intelligence significativa e recebida. Meta minima de revisao: mensal.
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

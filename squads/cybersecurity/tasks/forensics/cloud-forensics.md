@@ -234,3 +234,18 @@ aws logs get-log-events --log-group-name /aws/lambda/[FUNCTION] > lambda_logs.js
 - `scripts/cloud-security-audit.md` — Cloud audit automation
 - `workflows/cloud-migration-security.md` — Cloud security architecture
 - `archive/notable-breaches/capital-one-2019.md` — Cloud breach case study
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | evidence-standard, nist-800-61-incident-response |
+| Checklists | forensics-collection-quality, evidence-chain-quality |
+| Templates | reports/postmortem-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: chris-sanders + shannon-runner

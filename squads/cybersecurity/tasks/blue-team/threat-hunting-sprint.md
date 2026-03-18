@@ -40,3 +40,11 @@ Conduzir sprints de threat hunting proativas, buscando indicadores de comprometi
 - [ ] Hipoteses negativas documentadas na knowledge base
 - [ ] Checklist `threat-hunt-quality` atendido
 - [ ] Checklist `sanders-packet-analysis` validado
+
+## Routing & Escalation
+- **frameworks**: mitre-att-ck, diamond-model
+- **checklists**: threat-hunt-quality, sanders/sanders-packet-analysis
+- **templates**: reports/technical-report-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: threat-landscape-analysis
+- **delivers_to**: detection-rule-development (new rules)

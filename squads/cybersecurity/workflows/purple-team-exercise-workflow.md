@@ -17,7 +17,7 @@ Validar a eficacia dos controles de deteccao e resposta atraves de exercicios co
 
 ### 1. Exercise Planning
 
-- Responsavel: **Purple Team Lead Agent**
+- Responsavel: **peter-kim + chris-sanders**
 - Selecionar scenarios e tecnicas ATT&CK a serem testadas
 - Definir regras do exercicio e limites de escopo
 - Alinhar objetivos entre red team e blue team
@@ -25,7 +25,7 @@ Validar a eficacia dos controles de deteccao e resposta atraves de exercicios co
 
 ### 2. Pre-Exercise Briefing
 
-- Responsavel: **Purple Team Lead Agent**
+- Responsavel: **peter-kim + chris-sanders**
 - Apresentar o plano de exercicio para ambas as equipes
 - Confirmar que blue team entende os objetivos de aprendizado
 - Verificar que tooling de red team esta preparado
@@ -33,7 +33,7 @@ Validar a eficacia dos controles de deteccao e resposta atraves de exercicios co
 
 ### 3. Technique Execution
 
-- Responsavel: **Red Team Agent**
+- Responsavel: **rogue**
 - Executar a tecnica ATT&CK conforme planejado
 - Documentar exatamente o que foi feito com timestamps
 - Ponto de decisao: **Execucao bem sucedida?**
@@ -42,7 +42,7 @@ Validar a eficacia dos controles de deteccao e resposta atraves de exercicios co
 
 ### 4. Detection Assessment
 
-- Responsavel: **Blue Team Agent**
+- Responsavel: **chris-sanders**
 - Verificar se alertas foram gerados pela atividade
 - Avaliar qualidade e tempo de deteccao
 - Ponto de decisao: **Tecnica detectada?**
@@ -51,28 +51,28 @@ Validar a eficacia dos controles de deteccao e resposta atraves de exercicios co
 
 ### 5. Response Assessment
 
-- Responsavel: **Blue Team Agent**
+- Responsavel: **chris-sanders**
 - Executar o playbook de resposta correspondente
 - Avaliar se as acoes de containment sao eficazes
 - Medir tempo total de resposta (MTTD + MTTR)
 
 ### 6. Joint Analysis
 
-- Responsavel: **Purple Team Lead Agent**
+- Responsavel: **peter-kim + chris-sanders**
 - Red team explica detalhes tecnicos da execucao
 - Blue team compartilha o que viu (ou nao viu)
 - Identificar melhorias em detection rules, logs e playbooks
 
 ### 7. Improvement Implementation
 
-- Responsavel: **Detection Engineer Agent** e **Blue Team Agent**
+- Responsavel: **chris-sanders**
 - Criar ou ajustar detection rules para gaps encontrados
 - Atualizar playbooks de resposta com novos procedimentos
 - Re-testar para validar melhorias
 
 ### 8. Report e Closeout
 
-- Responsavel: **Purple Team Lead Agent**
+- Responsavel: **peter-kim + chris-sanders**
 - Compilar resultados por tecnica testada
 - Gerar scorecard de deteccao e resposta
 - Documentar action items e owners
@@ -93,3 +93,27 @@ Validar a eficacia dos controles de deteccao e resposta atraves de exercicios co
 - Detection rules novas ou atualizadas
 - Playbooks de resposta revisados
 - Relatorio executivo do exercicio
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

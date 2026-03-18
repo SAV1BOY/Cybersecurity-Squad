@@ -38,3 +38,11 @@ Revisar a segmentacao de rede em ambientes cloud, verificando isolamento entre w
 - [ ] Isolamento entre ambientes verificado
 - [ ] Private endpoints avaliados para servicos criticos
 - [ ] Checklist `cloud-network-segmentation` 100% atendido
+
+## Routing & Escalation
+- **frameworks**: cloudsec-layer, zero-trust-architecture
+- **checklists**: cloud/cloud-network-segmentation
+- **templates**: reports/finding-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: discovery phase
+- **delivers_to**: findings-review

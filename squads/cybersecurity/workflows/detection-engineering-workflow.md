@@ -17,14 +17,14 @@ Garantir que cada detection rule seja baseada em inteligencia de ameacas, testad
 
 ### 1. Detection Hypothesis
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Formular hipotese de deteccao baseada em threat intelligence
 - Mapear a tecnica ATT&CK correspondente
 - Documentar o comportamento esperado do adversario
 
 ### 2. Data Source Validation
 
-- Responsavel: **Data Engineer Agent**
+- Responsavel: **chris-sanders**
 - Verificar se os log sources necessarios estao disponiveis
 - Validar que os campos requeridos estao sendo coletados
 - Ponto de decisao: **Dados suficientes para a deteccao?**
@@ -33,14 +33,14 @@ Garantir que cada detection rule seja baseada em inteligencia de ameacas, testad
 
 ### 3. Rule Development
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Escrever a detection rule na linguagem do SIEM (Sigma, KQL, SPL)
 - Incluir campos de contexto para facilitar triage
 - Documentar logic e thresholds utilizados
 
 ### 4. Testing e Validation
 
-- Responsavel: **Purple Team Agent**
+- Responsavel: **rogue + chris-sanders**
 - Executar atomic test ou simulacao da tecnica em lab
 - Validar que a rule dispara corretamente (true positive)
 - Testar contra dados normais para medir false positive rate
@@ -50,21 +50,21 @@ Garantir que cada detection rule seja baseada em inteligencia de ameacas, testad
 
 ### 5. Peer Review
 
-- Responsavel: **Senior Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Revisar logica, performance e cobertura da rule
 - Validar que a documentacao esta completa
 - Aprovar ou solicitar mudancas
 
 ### 6. Deployment
 
-- Responsavel: **Detection Ops Agent**
+- Responsavel: **chris-sanders**
 - Deployar rule em ambiente de producao
 - Configurar severity e notification routing
 - Ativar em modo de observacao por periodo definido
 
 ### 7. Tuning e Manutencao
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Monitorar metricas de disparo (true/false positive rates)
 - Ajustar thresholds e exclusions conforme necessario
 - Revisar periodicamente contra novas threat intelligence
@@ -84,3 +84,27 @@ Garantir que cada detection rule seja baseada em inteligencia de ameacas, testad
 - Resultado de testes (true positive, false positive rates)
 - Mapeamento ATT&CK atualizado com cobertura
 - Runbook de triage associado a rule
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

@@ -38,3 +38,19 @@ Gerar e publicar relatorios de metricas de seguranca periodicos, fornecendo visi
 - [ ] Desvios significativos destacados e explicados
 - [ ] Relatorio adequado para audiencia executiva
 - [ ] Dashboard publicado e acessivel
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | security-kpi-dashboard, governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/quarterly-security-report-template |
+| Registry | data/metrics/security-kpis, data/scorecards/squad-scorecard |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: monthly cadence
+- **Delivers to**: stakeholders / cyber-chief

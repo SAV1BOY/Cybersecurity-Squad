@@ -40,3 +40,19 @@ Revisar a arquitetura de sistemas e infraestrutura sob perspectiva de seguranca,
 - [ ] Single points of failure identificados
 - [ ] Checklist `threat-model-quality` atendido
 - [ ] Checklist `cloud-security-assessment-quality` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | zero-trust-architecture, appsec-layer, cloudsec-layer |
+| Checklists | threat-model-quality, cloud-security-assessment-quality |
+| Templates | reports/threat-model-report-template |
+| Registry | data/registries/risk-register |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: new system review / dev squad request
+- **Delivers to**: findings-review

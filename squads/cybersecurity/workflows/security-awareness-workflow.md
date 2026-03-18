@@ -17,21 +17,21 @@ Reduzir o risco humano atraves de programas de awareness que educam colaboradore
 
 ### 1. Needs Assessment
 
-- Responsavel: **Awareness Program Agent**
+- Responsavel: **marcus-carey**
 - Analisar incidentes recentes para identificar areas de maior risco humano
 - Revisar resultados de campanhas anteriores
 - Identificar grupos de alto risco (novos funcionarios, executivos, IT admins)
 
 ### 2. Content Development
 
-- Responsavel: **Content Creator Agent**
+- Responsavel: **marcus-carey**
 - Desenvolver materiais de treinamento por topico (phishing, passwords, social engineering, data handling)
 - Adaptar linguagem para cada publico-alvo
 - Criar quizzes e exercicios praticos
 
 ### 3. Campaign Planning
 
-- Responsavel: **Awareness Program Agent**
+- Responsavel: **marcus-carey**
 - Definir cronograma de campanhas ao longo do ano
 - Ponto de decisao: **Campanha inclui phishing simulation?**
   - Sim -> coordenar com red team para preparar templates
@@ -39,14 +39,14 @@ Reduzir o risco humano atraves de programas de awareness que educam colaboradore
 
 ### 4. Execution
 
-- Responsavel: **Awareness Program Agent**
+- Responsavel: **marcus-carey**
 - Distribuir treinamentos via plataforma de learning
 - Executar phishing simulations conforme planejado
 - Enviar comunicacoes de reforco e lembretes
 
 ### 5. Measurement
 
-- Responsavel: **Metrics Agent**
+- Responsavel: **cyber-chief**
 - Coletar metricas de participacao e conclusao de treinamento
 - Analisar resultados de phishing simulation (click rate, report rate)
 - Ponto de decisao: **Metas de awareness atingidas?**
@@ -55,14 +55,14 @@ Reduzir o risco humano atraves de programas de awareness que educam colaboradore
 
 ### 6. Follow-Up
 
-- Responsavel: **Awareness Program Agent**
+- Responsavel: **marcus-carey**
 - Oferecer treinamento adicional para quem falhou na simulation
 - Reconhecer publicamente comportamentos seguros (report de phishing)
 - Atualizar materiais com base no feedback recebido
 
 ### 7. Reporting
 
-- Responsavel: **Metrics Agent**
+- Responsavel: **cyber-chief**
 - Gerar relatorio de eficacia do programa para management
 - Mostrar tendencias historicas e ROI do programa
 - Recomendar investimentos para o proximo ciclo
@@ -82,3 +82,27 @@ Reduzir o risco humano atraves de programas de awareness que educam colaboradore
 - Metricas de phishing simulation por departamento
 - Certificados de conclusao de treinamento
 - Plano de campanhas para o proximo periodo
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

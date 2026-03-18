@@ -39,3 +39,19 @@ Validar vulnerabilidades identificadas durante recon e scanning, confirmando exp
 - [ ] Exploits executados de forma nao destrutiva
 - [ ] Checklist `weidman-exploitation-validation` atendido
 - [ ] Checklist `evidence-chain-quality` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | offense-layer, risk-scoring-model |
+| Checklists | vuln-assessment-quality, weidman/weidman-exploitation-validation, evidence-chain-quality |
+| Templates | reports/finding-template, reports/technical-report-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: recon-and-enumeration
+- **Delivers to**: safe-exploitation-simulation

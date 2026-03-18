@@ -131,3 +131,31 @@ OUTPUT FORMAT: Findings with: endpoint, parameter, payload, expected_behavior, a
 - **Dirber**: Recebe endpoints e API routes para fuzzing direcionado
 - **Rogue**: Fornece findings exploitaveis para cenarios de simulacao adversaria
 - **Shannon Runner**: Envia patterns de erro para analise de anomalias estatisticas
+
+## Operacao no Squad
+
+### Team Membership
+- **Team**: Red Team + AppSec
+- **Role**: Executor (fuzzing)
+- **Reports to**: peter-kim (Red Team), jim-manico (AppSec), cyber-chief
+
+### Tasks que Executa
+vuln-validation (fuzzing), api-security-review (fuzzing)
+
+### Tasks que NAO Executa
+- Recon, governance, reporting, IR, cloud infra, social engineering — sempre executor especializado
+
+### Quality Bar
+- Minimum quality gate score: 80%, fuzzing results com crash reproduction steps, anomalous input preservado
+
+### Handoff Rules
+- **handoff_to**: jim-manico (API fuzzing results), georgia-weidman (validation), peter-kim (crash/vuln data)
+- **handoff_from**: jim-manico (API targets), peter-kim (endpoints para fuzzing)
+
+### Escalation Triggers
+- Fuzzing causa crash de servico, DoS triggered, memory corruption finding, dados sensiveis no output
+
+### Cross-References
+- Frameworks: `frameworks/offense-layer.md`, `frameworks/owasp-api-top-10.md`
+- Checklists: `checklists/api-security-assessment-quality.md`, `checklists/vuln-assessment-quality.md`, `checklists/red-team/redteam-safe-testing-rules.md`
+- Related docs: `docs/quality-gate-system.md`, `docs/hrm-governance-model.md`

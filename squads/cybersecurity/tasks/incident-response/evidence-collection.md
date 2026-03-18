@@ -39,3 +39,19 @@ Coletar, preservar e documentar evidencias digitais do incidente com cadeia de c
 - [ ] Memory dumps coletados antes de shutdown (quando possivel)
 - [ ] Checklist `forensics-collection-quality` atendido
 - [ ] Checklist `sanders-evidence-integrity` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | evidence-standard |
+| Checklists | forensics-collection-quality, evidence-chain-quality, sanders/sanders-evidence-integrity |
+| Templates | reports/postmortem-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: triage (parallel with containment)
+- **Delivers to**: postmortem-and-actions

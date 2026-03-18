@@ -161,3 +161,18 @@ Reassess outside normal cycle when:
 - `tasks/governance/compliance-gap-analysis.md` — Compliance requirements for vendors
 - `archive/notable-breaches/kaseya-2021.md` — MSP vendor compromise case study
 - `archive/notable-breaches/target-2013.md` — Vendor-initiated breach case study
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: cyber-chief + marcus-carey

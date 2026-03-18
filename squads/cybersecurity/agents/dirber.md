@@ -129,3 +129,31 @@ OUTPUT FORMAT: Structured findings with: path, http_status, content_length, cont
 - **Fuzzer**: Entrega endpoints e parametros descobertos para fuzzing
 - **Rogue**: Alimenta cenarios de ataque com paths e endpoints de alto impacto
 - **Shannon Runner**: Envia arquivos de config descobertos para analise de secrets
+
+## Operacao no Squad
+
+### Team Membership
+- **Team**: Discovery
+- **Role**: Executor (web directory enumeration)
+- **Reports to**: cartographer (domain lead), cyber-chief
+
+### Tasks que Executa
+recon-and-enumeration (web directory), attack-surface-mapping (web content discovery)
+
+### Tasks que NAO Executa
+- Tudo fora de web directory enum — exploitation, port scanning, governance, IR, AppSec, CloudSec
+
+### Quality Bar
+- Minimum quality gate score: 80%, web paths documentados com HTTP status codes, rate limiting configurado
+
+### Handoff Rules
+- **handoff_to**: peter-kim (web enum results), busterer (complementary enum), cartographer (web assets)
+- **handoff_from**: peter-kim (web targets), cartographer (web discovery tasks)
+
+### Escalation Triggers
+- Web app retornando erros, rate limiting triggered, admin panels descobertos, WAF bloqueando
+
+### Cross-References
+- Frameworks: `frameworks/discovery-layer.md`, `frameworks/offense-layer.md`
+- Checklists: `checklists/kim/kim-recon-checklist.md`, `checklists/red-team/redteam-safe-testing-rules.md`
+- Related docs: `docs/quality-gate-system.md`, `docs/hrm-governance-model.md`

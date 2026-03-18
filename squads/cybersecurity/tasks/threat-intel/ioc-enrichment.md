@@ -173,3 +173,18 @@ IOC Ingestion -> Dedup -> Auto-Enrich -> Confidence Score ->
 - `workflows/detection-engineering-workflow.md` — IOC-to-detection rule pipeline
 - `scripts/detection-rule-templates.md` — Detection rule formats
 - `data/registries/detection-rules-registry.md` — Rule registry
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | mitre-att-ck, mitre-atlas |
+| Checklists | threat-hunt-quality |
+| Templates | reports/technical-report-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: rogue + shannon-runner

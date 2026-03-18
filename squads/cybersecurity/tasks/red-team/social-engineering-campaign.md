@@ -38,3 +38,19 @@ Executar campanha de social engineering autorizada para avaliar a resiliencia hu
 - [ ] Limites eticos respeitados (sem coercao ou intimidacao)
 - [ ] Checklist `social-engineering-assessment-quality` atendido
 - [ ] Checklist `carey-ethical-boundaries` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | phishing-simulation-methodology |
+| Checklists | social-engineering-assessment-quality, carey/carey-ethical-boundaries |
+| Templates | reports/finding-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: intake phase
+- **Delivers to**: report-findings

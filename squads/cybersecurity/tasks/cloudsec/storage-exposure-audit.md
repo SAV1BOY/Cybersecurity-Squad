@@ -38,3 +38,11 @@ Auditar servicos de cloud storage (S3, Azure Blob, GCS) quanto a exposicao publi
 - [ ] Dados sensiveis em storage exposto identificados
 - [ ] Access logging verificado em storage critico
 - [ ] Checklist `cloud-storage-exposure` 100% atendido
+
+## Routing & Escalation
+- **frameworks**: cloudsec-layer
+- **checklists**: cloud/cloud-storage-exposure
+- **templates**: reports/finding-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: discovery/asset-discovery
+- **delivers_to**: findings-review

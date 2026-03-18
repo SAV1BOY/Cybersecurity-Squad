@@ -39,3 +39,11 @@ Facilitar exercicios tabletop de resposta a incidentes, testando a capacidade da
 - [ ] Recomendacoes sao acionaveis com responsaveis definidos
 - [ ] Checklist `tabletop-exercise-quality` atendido
 - [ ] Checklist `carey-communication-under-pressure` validado
+
+## Routing & Escalation
+- **frameworks**: ir-layer
+- **checklists**: tabletop-exercise-quality, carey/carey-communication-under-pressure
+- **templates**: reports/postmortem-template
+- **registry**: data/registries/lessons-learned-registry
+- **receives_from**: quarterly cadence
+- **delivers_to**: improvement-backlog

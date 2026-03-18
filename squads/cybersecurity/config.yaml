@@ -458,58 +458,58 @@ routing:
   maintain-checklists-and-standards:
     agents: [cyber-chief]
     frameworks: [governance-layer]
-    checklists: []
-    templates: []
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template]
     registry: [data/registries/decisions-log]
 
   toolchain-maintenance:
     agents: [command-generator, cyber-chief]
-    frameworks: []
-    checklists: []
-    templates: []
+    frameworks: [governance-layer]
+    checklists: [santos/santos-soc-readiness]
+    templates: [reports/remediation-plan-template]
     registry: [data/registries/decisions-log]
 
   quarterly-security-review:
     agents: [cyber-chief, marcus-carey]
     frameworks: [governance-layer, security-kpi-dashboard]
-    checklists: []
+    checklists: [compliance-audit-quality]
     templates: [reports/quarterly-security-report-template]
     registry: [data/metrics/security-kpis, data/registries/decisions-log]
 
   cross-squad-sync:
     agents: [cyber-chief, marcus-carey]
     frameworks: [governance-layer]
-    checklists: []
-    templates: []
-    registry: [data/registries/decisions-log]
+    checklists: [carey/carey-communication-under-pressure]
+    templates: [communications/incident-notification-template]
+    registry: [data/registries/decisions-log, data/handoffs/handoff-tracking]
 
   create-new-agent:
     agents: [cyber-chief]
-    frameworks: []
-    checklists: []
-    templates: []
+    frameworks: [governance-layer]
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template]
     registry: [data/registries/decisions-log]
 
   swipe-file-curation:
     agents: [cyber-chief]
-    frameworks: []
-    checklists: []
+    frameworks: [governance-layer]
+    checklists: [compliance-audit-quality]
     templates: []
-    registry: []
+    registry: [data/registries/decisions-log]
 
   update-threat-intelligence:
     agents: [rogue, shannon-runner]
-    frameworks: [mitre-att-ck]
-    checklists: []
-    templates: []
+    frameworks: [mitre-att-ck, mitre-atlas]
+    checklists: [threat-hunt-quality]
+    templates: [reports/technical-report-template]
     registry: [data/registries/findings-registry]
 
   security-metrics-reporting:
     agents: [cyber-chief, marcus-carey]
-    frameworks: [security-kpi-dashboard]
-    checklists: []
+    frameworks: [security-kpi-dashboard, governance-layer]
+    checklists: [compliance-audit-quality]
     templates: [reports/quarterly-security-report-template]
-    registry: [data/metrics/security-kpis]
+    registry: [data/metrics/security-kpis, data/scorecards/squad-scorecard]
 
 # ============================================================
 # CROSS-SQUAD INTEGRATION
@@ -585,3 +585,224 @@ defaults:
   opsec_level: standard
   language: pt-br
   technical_terms: en
+
+# ============================================================
+# ESCALATION RULES
+# ============================================================
+
+escalation_rules:
+  severity_triggers:
+    critical_vuln_found:
+      action: "Notify cyber-chief within 1h; notify stakeholder within 4h"
+      registry: data/registries/findings-registry
+    active_breach_detected:
+      action: "Invoke IR workflow immediately; cyber-chief takes command"
+      registry: data/registries/incident-registry
+    scope_violation:
+      action: "Halt operation immediately; cyber-chief reviews and decides"
+      registry: data/registries/decisions-log
+    quality_gate_failed_twice:
+      action: "Escalate to cyber-chief for rework decision"
+      registry: data/registries/decisions-log
+    unauthorized_action_detected:
+      action: "Halt all operations; full audit trail review; cyber-chief decision"
+      registry: data/registries/incident-registry
+  cross_squad_escalation:
+    unresolved_after_sla:
+      action: "Escalate to both squad leads; document in decisions-log"
+      sla: "24h after original SLA expiry"
+    conflicting_priorities:
+      action: "Joint triage meeting within 24h"
+      owner: cyber-chief
+    security_vs_delivery:
+      action: "Risk-based decision by cyber-chief; document rationale"
+      registry: data/registries/decisions-log
+    handoff_rejected:
+      action: "Return to originating agent with feedback; cyber-chief mediates if unresolved"
+      registry: data/handoffs/handoff-tracking
+
+# ============================================================
+# DELEGATION RULES
+# ============================================================
+
+delegation_rules:
+  principles:
+    - "Delegate to agent with highest domain match per config.yaml routing"
+    - "Never delegate without context packet (scope, constraints, deadline, risk level)"
+    - "Delegation does not transfer accountability — cyber-chief remains accountable"
+    - "Each delegation is logged in decisions-log with timestamp and rationale"
+  restrictions:
+    - "High-risk operations (exploitation, IR containment) require cyber-chief pre-approval"
+    - "Cross-squad handoffs require formal handoff package (see docs/delegation-protocol.md)"
+    - "No agent operates outside their declared scope (see agents/*.md 'Tasks que NAO Executa')"
+    - "Sensitive data operations require evidence-chain-quality checklist"
+  override: "cyber-chief can override any delegation with documented rationale in decisions-log"
+  delegation_chain:
+    intake: cyber-chief -> domain_lead -> executor
+    execution: domain_lead -> specialist_agent
+    review: cyber-chief or domain_lead
+    handoff: cyber-chief -> receiving_squad_lead
+
+# ============================================================
+# CADENCE
+# ============================================================
+
+cadence:
+  daily:
+    activities:
+      - "Alert triage and severity classification"
+      - "Active incident status check"
+    owner: chris-sanders
+    registry: data/registries/incident-registry
+  weekly:
+    activities:
+      - "Vulnerability backlog review"
+      - "Detection rule effectiveness review"
+      - "Cross-squad request queue review"
+    owner: cyber-chief
+    registry: data/registries/findings-registry
+  monthly:
+    activities:
+      - "Security metrics dashboard review"
+      - "Maturity score update"
+      - "Improvement backlog grooming"
+    owner: cyber-chief
+    registry: data/metrics/security-kpis
+    output: data/scorecards/squad-scorecard
+  quarterly:
+    activities:
+      - "Tabletop exercise"
+      - "Risk register full review"
+      - "Cross-squad integration health check"
+      - "KPI target recalibration"
+    owner: cyber-chief
+    participants: [marcus-carey, chris-sanders, omar-santos]
+    registry: data/registries/risk-register
+  annual:
+    activities:
+      - "Security program strategy review"
+      - "Red team maturity assessment"
+      - "Full compliance audit cycle"
+    owner: cyber-chief
+    output: data/scorecards/squad-scorecard
+
+# ============================================================
+# SCORE THRESHOLDS & GO/NO-GO
+# ============================================================
+
+score_thresholds:
+  quality_gate_pass: 80         # Minimum % to pass any quality gate
+  gold_standard: 90             # Minimum % for GOLD rating
+  sota_standard: 95             # Minimum % for SOTA rating
+  rework_trigger: 80            # Below this triggers mandatory rework
+  escalation_trigger: 60        # Below this triggers escalation to cyber-chief
+  auto_approve: 95              # Above this, output can skip manual review
+
+go_no_go:
+  before_pentest_start:
+    - "ROE signed and validated"
+    - "Emergency contacts confirmed and tested"
+    - "Scope boundaries documented and peer-reviewed"
+    - "Rollback plan exists for each test category"
+    - "scope-and-roe-quality checklist >= 80%"
+  before_exploitation:
+    - "Vulnerability confirmed (not just scanner output)"
+    - "Impact assessment completed"
+    - "redteam-safe-testing-rules checklist validated"
+    - "Client notification window confirmed"
+  before_report_delivery:
+    - "All findings peer-reviewed by second agent"
+    - "Evidence chain validated (SHA-256 hashes verified)"
+    - "Executive summary reviewed by cyber-chief"
+    - "security-report-quality checklist >= 80%"
+    - "No findings missing remediation recommendations"
+  before_cross_squad_handoff:
+    - "Handoff package complete (see docs/delegation-protocol.md)"
+    - "Receiving squad acknowledged receipt"
+    - "SLA defined and agreed by both squads"
+    - "Quality gate passed on originating squad side"
+    - "Logged in data/handoffs/handoff-tracking"
+  before_incident_closure:
+    - "Root cause identified and documented"
+    - "Containment verified effective"
+    - "Postmortem completed with action items"
+    - "Detection gap addressed or backlog item created"
+    - "Lessons learned registered"
+
+# ============================================================
+# REWORK LOOP
+# ============================================================
+
+rework_loop:
+  trigger: "Quality gate score < 80% OR reviewer rejects output"
+  max_iterations: 3
+  process:
+    iteration_1:
+      action: "Return to original agent with specific feedback and failed checklist items"
+      sla: "Agent resubmits within 4h (or next business day)"
+    iteration_2:
+      action: "Agent revises with domain lead oversight"
+      sla: "Resubmit within 8h"
+    iteration_3:
+      action: "Escalate to cyber-chief; may reassign to different agent"
+      sla: "Resolution within 24h"
+  after_max_iterations:
+    action: "Cyber-chief reviews and either approves with documented exceptions or redesigns approach"
+    registry: data/registries/decisions-log
+  tracking: data/backlog/improvement-backlog
+
+# ============================================================
+# REVIEW LOOPS
+# ============================================================
+
+review_loops:
+  per_task_output:
+    reviewer: "cyber-chief (default) or domain lead (delegated)"
+    criteria: "Applicable quality gate checklist(s) from config.yaml routing"
+    pass_action: "Register in appropriate registry; proceed to next stage"
+    fail_action: "Enter rework_loop; log in decisions-log"
+    evidence: "Reviewer signs off with checklist score and timestamp"
+  per_workflow_stage:
+    reviewer: "Stage owner verifies previous stage output before accepting"
+    criteria: "Stage-specific acceptance criteria defined in workflow file"
+    pass_action: "Advance to next stage; update workflow status"
+    fail_action: "Return to previous stage with feedback; log in decisions-log"
+  cross_squad:
+    reviewer: "Receiving squad lead validates handoff package"
+    criteria: "Handoff contract requirements met (see docs/delegation-protocol.md)"
+    pass_action: "Accept handoff; assign owner; start SLA clock"
+    fail_action: "Reject with specific feedback; return to originating squad"
+
+# ============================================================
+# TEAMS (Domain Groupings)
+# ============================================================
+
+teams:
+  discovery:
+    lead: cartographer
+    members: [busterer, dirber]
+    scope: "Asset discovery, attack surface mapping, data flow mapping"
+  red_team:
+    lead: peter-kim
+    members: [georgia-weidman, rogue, ripper, fuzzer]
+    scope: "Offensive security, vulnerability validation, exploitation simulation"
+  blue_team:
+    lead: chris-sanders
+    members: [omar-santos, shannon-runner]
+    scope: "Detection, monitoring, threat hunting, SOC operations"
+  appsec:
+    lead: jim-manico
+    members: [fuzzer, command-generator]
+    scope: "Application security, SDLC, code review, API security"
+  cloudsec:
+    lead: omar-santos
+    members: [cartographer]
+    scope: "Cloud security, IAM, logging, network segmentation"
+  incident_response:
+    lead: chris-sanders
+    members: [omar-santos, shannon-runner, marcus-carey]
+    scope: "Incident triage, containment, forensics, postmortem"
+  governance:
+    lead: cyber-chief
+    members: [marcus-carey]
+    scope: "Risk management, compliance, metrics, cross-squad coordination"

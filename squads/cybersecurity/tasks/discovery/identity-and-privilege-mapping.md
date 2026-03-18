@@ -38,3 +38,19 @@ Mapear identidades, privilegios e acessos nos sistemas in-scope, identificando e
 - [ ] Stale accounts e orphaned permissions listados
 - [ ] Checklist `identity-and-ad-assessment-quality` atendido
 - [ ] Checklist `cloud-iam-least-privilege` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | identity-layer, zero-trust-architecture |
+| Checklists | identity-and-ad-assessment-quality, cloud/cloud-iam-least-privilege |
+| Templates | reports/technical-report-template |
+| Registry | data/registries/asset-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: asset-discovery
+- **Delivers to**: iam-least-privilege-project

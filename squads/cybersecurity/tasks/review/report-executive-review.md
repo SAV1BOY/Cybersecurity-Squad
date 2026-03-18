@@ -38,3 +38,19 @@ Revisar o executive summary e relatorios de alto nivel, garantindo que a comunic
 - [ ] Metricas-chave presentes e contextualizadas
 - [ ] Consistencia com relatorio tecnico validada
 - [ ] Checklist `security-report-quality` atendido
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | security-report-quality |
+| Templates | reports/executive-summary-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: findings-review
+- **Delivers to**: stakeholder delivery

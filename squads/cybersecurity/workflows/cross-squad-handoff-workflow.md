@@ -17,14 +17,14 @@ Garantir que informacoes criticas nao se percam durante transicoes entre equipes
 
 ### 1. Handoff Preparation
 
-- Responsavel: **Handoff Coordinator Agent** (squad de origem)
+- Responsavel: **cyber-chief** (squad de origem)
 - Compilar toda documentacao relevante do trabalho realizado
 - Estruturar handoff package com contexto, findings e next steps
 - Identificar o ponto de contato no squad de destino
 
 ### 2. Context Documentation
 
-- Responsavel: **Originating Agent**
+- Responsavel: **cartographer**
 - Documentar o que foi feito, por que e o que falta fazer
 - Incluir decisoes tomadas e justificativas
 - Listar dependencias e riscos conhecidos
@@ -32,7 +32,7 @@ Garantir que informacoes criticas nao se percam durante transicoes entre equipes
 
 ### 3. Handoff Meeting
 
-- Responsavel: **Handoff Coordinator Agent**
+- Responsavel: **cyber-chief**
 - Agendar sessao de handoff com ambos os squads
 - Apresentar o handoff package ao squad de destino
 - Ponto de decisao: **Squad de destino aceita o handoff?**
@@ -41,14 +41,14 @@ Garantir que informacoes criticas nao se percam durante transicoes entre equipes
 
 ### 4. Acceptance e Assignment
 
-- Responsavel: **Receiving Lead Agent** (squad de destino)
+- Responsavel: **cyber-chief** (squad de destino)
 - Revisar completude do handoff package
 - Atribuir owner no squad de destino
 - Confirmar entendimento do escopo e expectativas
 
 ### 5. Transition Period
 
-- Responsavel: **Originating Agent** e **Receiving Agent**
+- Responsavel: **cartographer** e **cartographer**
 - Manter canal de comunicacao aberto por periodo definido
 - Originating agent disponivel para esclarecer duvidas
 - Ponto de decisao: **Receiving agent autonomo?**
@@ -57,7 +57,7 @@ Garantir que informacoes criticas nao se percam durante transicoes entre equipes
 
 ### 6. Confirmation e Closeout
 
-- Responsavel: **Handoff Coordinator Agent**
+- Responsavel: **cyber-chief**
 - Confirmar que o squad de destino assumiu a responsabilidade
 - Atualizar tracking systems com novo owner
 - Registrar handoff no log de transferencias
@@ -87,3 +87,27 @@ O handoff package deve conter no minimo:
 - Decisoes tomadas e justificativas
 - Contatos para esclarecimentos
 - Prazo ou SLA associado
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

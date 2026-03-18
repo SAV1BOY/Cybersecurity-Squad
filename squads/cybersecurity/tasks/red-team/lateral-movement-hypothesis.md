@@ -39,3 +39,19 @@ Identificar e documentar caminhos de movimentacao lateral possiveis a partir de 
 - [ ] Mapeamento ATT&CK completo para cada path
 - [ ] Checklist `redteam-attack-chain-review` atendido
 - [ ] Checklist `kim-network-pivoting-audit` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | lateral-movement-methodology, mitre-att-ck |
+| Checklists | red-team/redteam-attack-chain-review, kim/kim-network-pivoting-audit |
+| Templates | reports/finding-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: safe-exploitation-simulation
+- **Delivers to**: report-findings

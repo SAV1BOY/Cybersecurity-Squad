@@ -106,3 +106,18 @@ Minimum policy set for a mature security program:
 - `frameworks/governance-layer.md` — Governance framework
 - `frameworks/nist-csf.md` — NIST CSF policy requirements
 - `docs/incident-classification-guide.md` — Incident policy alignment
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: cyber-chief + marcus-carey

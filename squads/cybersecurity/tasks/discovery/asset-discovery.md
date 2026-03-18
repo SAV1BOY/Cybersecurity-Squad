@@ -38,3 +38,19 @@ Descobrir ativos digitais dentro do escopo autorizado que podem nao estar docume
 - [ ] Cloud assets verificados (buckets, blobs, storage)
 - [ ] Inventario atualizado com delta entre esperado e descoberto
 - [ ] Checklist `asset-inventory-quality` 100% atendido
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | discovery-layer |
+| Checklists | asset-inventory-quality |
+| Templates | trackers/asset-inventory-tracker |
+| Registry | data/registries/asset-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: intake phase
+- **Delivers to**: attack-surface-mapping

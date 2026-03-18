@@ -215,3 +215,18 @@ cat ssl.log | zeek-cut id.orig_h id.resp_h server_name validation_status | grep 
 - `workflows/incident-response-workflow.md` — IR process integration
 - `scripts/log-analysis-queries.md` — SIEM query examples
 - `tasks/threat-intel/ioc-enrichment.md` — IOC enrichment for network indicators
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | evidence-standard, nist-800-61-incident-response |
+| Checklists | forensics-collection-quality, evidence-chain-quality |
+| Templates | reports/postmortem-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Owner**: chris-sanders + shannon-runner

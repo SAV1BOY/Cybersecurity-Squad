@@ -38,3 +38,19 @@ Avaliar o nivel de maturidade de seguranca da organizacao usando modelo estrutur
 - [ ] Targets de maturidade realistas e acordados
 - [ ] Roadmap de evolucao com prioridades definidas
 - [ ] Checklist `compliance-audit-quality` atendido
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | red-team-maturity-model, security-kpi-dashboard, governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template |
+| Registry | data/metrics/maturity-score-history |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: quarterly/annual cadence
+- **Delivers to**: improvement-backlog

@@ -38,3 +38,11 @@ Auditar dependencias de terceiros (bibliotecas, frameworks, pacotes) quanto a vu
 - [ ] Licencas auditadas quanto a compliance
 - [ ] Checklist `appsec-supply-chain` atendido
 - [ ] Checklist `supply-chain-security-quality` validado
+
+## Routing & Escalation
+- **frameworks**: supply-chain-attack-defense
+- **checklists**: appsec/appsec-supply-chain, supply-chain-security-quality
+- **templates**: reports/finding-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: sdlc-security-gates
+- **delivers_to**: findings-review

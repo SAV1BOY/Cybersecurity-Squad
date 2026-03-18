@@ -17,14 +17,14 @@ Garantir que deployments em cloud sigam as melhores praticas de seguranca, compl
 
 ### 1. Scope e Context
 
-- Responsavel: **Cloud Security Analyst Agent**
+- Responsavel: **omar-santos**
 - Identificar cloud provider, servicos utilizados e modelo de responsabilidade
 - Mapear data flows e integracao com ambientes on-premises
 - Classificar dados armazenados e processados por sensibilidade
 
 ### 2. Identity e Access Review
 
-- Responsavel: **IAM Review Agent**
+- Responsavel: **ripper**
 - Auditar policies de IAM, roles e service accounts
 - Verificar principio de least privilege
 - Ponto de decisao: **Permissoes excessivas encontradas?**
@@ -33,35 +33,35 @@ Garantir que deployments em cloud sigam as melhores praticas de seguranca, compl
 
 ### 3. Network Security Review
 
-- Responsavel: **Network Security Agent**
+- Responsavel: **omar-santos**
 - Revisar security groups, NACLs, firewall rules
 - Verificar segmentacao e isolamento de workloads
 - Identificar servicos expostos publicamente sem justificativa
 
 ### 4. Data Protection Review
 
-- Responsavel: **Data Security Agent**
+- Responsavel: **omar-santos**
 - Verificar encryption at rest e in transit
 - Auditar configuracoes de storage (buckets, blobs) para acesso publico
 - Validar backup e disaster recovery configurations
 
 ### 5. Logging e Monitoring Review
 
-- Responsavel: **Detection Engineer Agent**
+- Responsavel: **chris-sanders**
 - Verificar que CloudTrail, Cloud Audit Logs ou equivalente estao habilitados
 - Validar que logs estao sendo enviados ao SIEM
 - Confirmar alertas para eventos criticos de seguranca
 
 ### 6. Compliance Mapping
 
-- Responsavel: **Compliance Agent**
+- Responsavel: **cyber-chief**
 - Mapear controles implementados contra frameworks exigidos
 - Identificar gaps de compliance especificos ao ambiente cloud
 - Documentar evidencias de conformidade
 
 ### 7. Infrastructure as Code Review
 
-- Responsavel: **AppSec Agent**
+- Responsavel: **jim-manico**
 - Escanear templates de IaC (Terraform, CloudFormation) com ferramentas automatizadas
 - Identificar misconfigurations antes do deploy
 - Ponto de decisao: **Misconfigurations criticas?**
@@ -70,7 +70,7 @@ Garantir que deployments em cloud sigam as melhores praticas de seguranca, compl
 
 ### 8. Report e Remediation
 
-- Responsavel: **Cloud Security Analyst Agent**
+- Responsavel: **omar-santos**
 - Compilar todos os findings em relatorio estruturado
 - Priorizar por risco e facilidade de correcao
 - Acompanhar remediacao ate closure
@@ -90,3 +90,27 @@ Garantir que deployments em cloud sigam as melhores praticas de seguranca, compl
 - Lista de findings priorizados com recomendacoes
 - Scorecard de compliance por framework
 - Action items com owners e prazos
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

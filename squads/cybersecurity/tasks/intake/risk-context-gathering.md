@@ -38,3 +38,19 @@ Coletar e documentar o contexto de risco do negocio para informar a priorizacao 
 - [ ] Controles existentes mapeados contra gaps conhecidos
 - [ ] Impacto potencial quantificado ou estimado
 - [ ] Checklist `scope-and-roe-quality` validado para contexto de risco
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | fair-risk-quantification, governance-layer |
+| Checklists | scope-and-roe-quality |
+| Templates | briefs/security-assessment-brief |
+| Registry | data/registries/risk-register |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: asset-scoping
+- **Delivers to**: discovery tasks

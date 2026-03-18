@@ -38,3 +38,19 @@ Configurar canais de comunicacao, definir escalation paths e estabelecer protoco
 - [ ] Out-of-band procedures documentados para emergencias
 - [ ] Status update frequency acordada com stakeholders
 - [ ] Checklist `carey-communication-under-pressure` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | carey/carey-communication-under-pressure |
+| Templates | communications/incident-notification-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: define-success-criteria
+- **Delivers to**: asset-scoping

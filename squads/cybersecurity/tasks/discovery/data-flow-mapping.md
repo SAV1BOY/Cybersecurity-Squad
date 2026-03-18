@@ -39,3 +39,19 @@ Mapear fluxos de dados entre sistemas, identificando onde dados sensiveis trafeg
 - [ ] Trust boundaries claramente definidos nos DFDs
 - [ ] Data leakage paths identificados e documentados
 - [ ] Checklist `threat-model-quality` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | discovery-layer, appsec-layer |
+| Checklists | threat-model-quality |
+| Templates | reports/threat-model-report-template |
+| Registry | data/registries/asset-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: asset-discovery
+- **Delivers to**: threat-modeling

@@ -17,7 +17,7 @@ Processar submissoes de bug bounty de forma eficiente e justa, garantindo que vu
 
 ### 1. Initial Triage
 
-- Responsavel: **Triage Agent**
+- Responsavel: **omar-santos**
 - Verificar se o report esta dentro do escopo do programa
 - Ponto de decisao: **Report dentro do escopo?**
   - Sim -> prosseguir com analise
@@ -26,7 +26,7 @@ Processar submissoes de bug bounty de forma eficiente e justa, garantindo que vu
 
 ### 2. Validation
 
-- Responsavel: **Validation Agent**
+- Responsavel: **georgia-weidman**
 - Reproduzir a vulnerabilidade em ambiente controlado
 - Ponto de decisao: **Vulnerabilidade confirmada?**
   - Sim -> classificar severidade
@@ -34,14 +34,14 @@ Processar submissoes de bug bounty de forma eficiente e justa, garantindo que vu
 
 ### 3. Severity Assessment
 
-- Responsavel: **Vuln Analyst Agent**
+- Responsavel: **georgia-weidman**
 - Calcular CVSS score baseado no impacto real
 - Determinar valor da recompensa conforme tabela do programa
 - Verificar se afeta dados de usuarios ou sistemas criticos
 
 ### 4. Developer Notification
 
-- Responsavel: **Triage Agent**
+- Responsavel: **omar-santos**
 - Criar ticket interno para o time responsavel pelo fix
 - Incluir detalhes tecnicos, severidade e SLA de correcao
 - Acompanhar progresso e cobrar se necessario
@@ -55,7 +55,7 @@ Processar submissoes de bug bounty de forma eficiente e justa, garantindo que vu
 
 ### 6. Fix Verification
 
-- Responsavel: **Validation Agent**
+- Responsavel: **georgia-weidman**
 - Verificar que o fix corrige a vulnerabilidade reportada
 - Testar para regressoes e bypasses
 - Ponto de decisao: **Fix efetivo?**
@@ -64,14 +64,14 @@ Processar submissoes de bug bounty de forma eficiente e justa, garantindo que vu
 
 ### 7. Reward e Disclosure
 
-- Responsavel: **Program Manager Agent**
+- Responsavel: **cyber-chief**
 - Processar pagamento da recompensa ao pesquisador
 - Coordenar disclosure timeline com pesquisador
 - Publicar advisory se aplicavel
 
 ### 8. Lessons Learned
 
-- Responsavel: **AppSec Agent**
+- Responsavel: **jim-manico**
 - Analisar root cause da vulnerabilidade
 - Verificar se o mesmo pattern existe em outros sistemas
 - Atualizar secure coding guidelines se necessario
@@ -91,3 +91,27 @@ Processar submissoes de bug bounty de forma eficiente e justa, garantindo que vu
 - Ticket de remediacao rastreado ate closure
 - Pagamento processado ao pesquisador
 - Metricas do programa (reports recebidos, MTTR, gastos)
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

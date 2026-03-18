@@ -39,3 +39,11 @@ Avaliar a seguranca de APIs expostas, identificando vulnerabilidades de autentic
 - [ ] Fuzzing executado em parametros de input
 - [ ] Checklist `api-security-assessment-quality` atendido
 - [ ] Checklist `appsec-api-security-gate` validado
+
+## Routing & Escalation
+- **frameworks**: owasp-api-top-10, api-security-testing-methodology
+- **checklists**: api-security-assessment-quality, appsec/appsec-api-security-gate
+- **templates**: reports/finding-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: discovery/threat-modeling
+- **delivers_to**: findings-review

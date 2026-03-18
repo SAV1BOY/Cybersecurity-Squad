@@ -38,3 +38,19 @@ Testar caminhos de privilege escalation a partir de acessos obtidos, identifican
 - [ ] Cleanup executado apos cada teste
 - [ ] Checklist `weidman-privilege-escalation-audit` atendido
 - [ ] Checklist `redteam-safe-testing-rules` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | privilege-escalation-methodology |
+| Checklists | weidman/weidman-privilege-escalation-audit, red-team/redteam-safe-testing-rules |
+| Templates | reports/finding-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: vuln-validation
+- **Delivers to**: report-findings

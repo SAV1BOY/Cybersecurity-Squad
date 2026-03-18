@@ -40,3 +40,11 @@ Melhorar a eficiencia e eficacia das operacoes do SOC, otimizando processos de t
 - [ ] Alert fatigue endereçada com acoes concretas
 - [ ] Checklist `santos-soc-readiness` atendido
 - [ ] Checklist `blueteam-monitoring-slo` validado
+
+## Routing & Escalation
+- **frameworks**: defense-layer, security-kpi-dashboard
+- **checklists**: santos/santos-soc-readiness, santos/santos-alert-triage, blue-team/blueteam-monitoring-slo
+- **templates**: reports/security-posture-report-template
+- **registry**: data/registries/decisions-log
+- **receives_from**: quarterly review / metrics analysis
+- **delivers_to**: cyber-chief

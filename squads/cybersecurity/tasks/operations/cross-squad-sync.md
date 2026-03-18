@@ -37,3 +37,19 @@ Sincronizar atividades e handoffs entre o Cybersecurity Squad e outros squads (D
 - [ ] Timelines de remediacao alinhados
 - [ ] Status de findings anteriores atualizado
 - [ ] Dependencias e bloqueios identificados e endereçados
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | carey/carey-communication-under-pressure |
+| Templates | communications/incident-notification-template |
+| Registry | data/registries/decisions-log, data/handoffs/handoff-tracking |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: weekly/monthly cadence
+- **Delivers to**: partner squads

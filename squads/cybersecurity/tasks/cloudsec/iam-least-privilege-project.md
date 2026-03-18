@@ -39,3 +39,11 @@ Implementar o principio de least privilege em todas as contas e roles de IAM clo
 - [ ] Permission boundaries implementados
 - [ ] Checklist `cloud-iam-least-privilege` 100% atendido
 - [ ] Checklist `cloud-security-assessment-quality` validado
+
+## Routing & Escalation
+- **frameworks**: cloudsec-layer, zero-trust-architecture
+- **checklists**: cloud/cloud-iam-least-privilege, cloud-security-assessment-quality
+- **templates**: reports/finding-template, reports/remediation-plan-template
+- **registry**: data/registries/findings-registry, data/registries/remediation-registry
+- **receives_from**: identity-and-privilege-mapping
+- **delivers_to**: remediation-plan-review

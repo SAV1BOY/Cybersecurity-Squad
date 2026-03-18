@@ -36,3 +36,19 @@ Manter checklists, standards e guidelines de seguranca atualizados, garantindo q
 - [ ] Lessons learned incorporados nos documentos relevantes
 - [ ] Changelog documentado para cada atualizacao
 - [ ] Equipes notificadas sobre mudancas relevantes
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: improvement-backlog
+- **Delivers to**: updated checklists

@@ -39,3 +39,11 @@ Avaliar a postura de seguranca em ambientes multi-cloud, identificando inconsist
 - [ ] Data residency validado contra requisitos
 - [ ] Checklist `cloud-security-assessment-quality` atendido
 - [ ] Checklist `cloud-serverless-container-security` validado
+
+## Routing & Escalation
+- **frameworks**: cloudsec-layer, cloud-identity-attack-defense
+- **checklists**: cloud-security-assessment-quality, cloud/cloud-serverless-container-security
+- **templates**: reports/technical-report-template
+- **registry**: data/registries/findings-registry
+- **receives_from**: discovery phase
+- **delivers_to**: findings-review

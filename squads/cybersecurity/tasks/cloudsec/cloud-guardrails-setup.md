@@ -39,3 +39,11 @@ Implementar guardrails preventivos em ambientes cloud para impedir misconfigurac
 - [ ] Drift detection configurado e alertando
 - [ ] Excecoes documentadas e aprovadas
 - [ ] Checklist `cloud-multi-account-security` atendido
+
+## Routing & Escalation
+- **frameworks**: cloudsec-layer, governance-layer
+- **checklists**: cloud/cloud-multi-account-security
+- **templates**: policies/access-control-policy-template
+- **registry**: data/registries/decisions-log
+- **receives_from**: cyber-chief directive
+- **delivers_to**: infra squad handoff

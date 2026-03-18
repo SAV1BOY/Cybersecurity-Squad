@@ -41,3 +41,19 @@ Realizar triagem inicial de alertas e incidentes de seguranca, classificando sev
 - [ ] Stakeholders notificados conforme escalation matrix
 - [ ] Checklist `incident-triage-quality` atendido
 - [ ] Checklist `ir-triage-and-severity` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | nist-800-61-incident-response, ir-layer |
+| Checklists | incident-triage-quality, incident-response/ir-triage-and-severity |
+| Templates | briefs/incident-intake-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: alert/detection trigger
+- **Delivers to**: containment-actions

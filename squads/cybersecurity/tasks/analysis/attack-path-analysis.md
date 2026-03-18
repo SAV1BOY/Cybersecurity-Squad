@@ -40,3 +40,19 @@ Analisar e priorizar attack paths identificados durante assessments, mapeando ca
 - [ ] Recomendacoes focam em choke points de maior valor
 - [ ] Checklist `kim-attack-path-prioritization` atendido
 - [ ] Checklist `redteam-attack-chain-review` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | mitre-att-ck, offense-layer |
+| Checklists | kim/kim-attack-path-prioritization, red-team/redteam-attack-chain-review |
+| Templates | reports/technical-report-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: red-team findings
+- **Delivers to**: remediation prioritization

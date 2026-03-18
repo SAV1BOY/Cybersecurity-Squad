@@ -17,21 +17,21 @@ Garantir que a organizacao esteja preparada para auditorias internas e externas,
 
 ### 1. Scope Definition
 
-- Responsavel: **Compliance Lead Agent**
+- Responsavel: **cyber-chief**
 - Definir escopo da auditoria com base no framework
 - Identificar sistemas, processos e equipes envolvidos
 - Confirmar periodo de avaliacao e timeline
 
 ### 2. Evidence Collection
 
-- Responsavel: **Evidence Collector Agent**
+- Responsavel: **omar-santos**
 - Mapear cada controle aos artefatos de evidencia necessarios
 - Coletar evidencias de logs, configuracoes, politicas e procedimentos
 - Organizar evidencias por controle em repositorio estruturado
 
 ### 3. Gap Assessment
 
-- Responsavel: **Compliance Analyst Agent**
+- Responsavel: **cyber-chief**
 - Revisar cada controle contra os requisitos do framework
 - Ponto de decisao: **Controle atende ao requisito?**
   - Sim -> documentar evidencia e marcar como compliant
@@ -39,7 +39,7 @@ Garantir que a organizacao esteja preparada para auditorias internas e externas,
 
 ### 4. Remediation Planning
 
-- Responsavel: **Compliance Lead Agent**
+- Responsavel: **cyber-chief**
 - Priorizar gaps por risco e impacto na auditoria
 - Atribuir owners e definir prazos de correcao
 - Ponto de decisao: **Remediacao possivel antes da auditoria?**
@@ -48,28 +48,28 @@ Garantir que a organizacao esteja preparada para auditorias internas e externas,
 
 ### 5. Internal Review
 
-- Responsavel: **Internal Audit Agent**
+- Responsavel: **cyber-chief**
 - Simular auditoria interna usando mesmos criterios
 - Identificar fragilidades na documentacao ou evidencias
 - Recomendar ajustes antes da auditoria formal
 
 ### 6. Audit Execution
 
-- Responsavel: **Compliance Lead Agent**
+- Responsavel: **cyber-chief**
 - Coordenar com auditores externos durante a execucao
 - Fornecer evidencias e esclarecimentos conforme solicitado
 - Documentar todas as questoes levantadas pelos auditores
 
 ### 7. Finding Response
 
-- Responsavel: **Compliance Lead Agent**
+- Responsavel: **cyber-chief**
 - Revisar findings do auditor e concordar ou contestar
 - Desenvolver plano de acao corretiva para cada finding
 - Definir owners e prazos para cada acao
 
 ### 8. Continuous Monitoring
 
-- Responsavel: **Compliance Analyst Agent**
+- Responsavel: **cyber-chief**
 - Implementar monitoramento continuo dos controles
 - Gerar evidencias automatizadas sempre que possivel
 - Preparar para proxima auditoria de forma incremental
@@ -89,3 +89,27 @@ Garantir que a organizacao esteja preparada para auditorias internas e externas,
 - Repositorio de evidencias organizado por controle
 - Plano de acao corretiva para findings
 - Dashboard de compliance status por framework
+
+## Quality Gates & Rework
+
+### Per-Stage Gates
+Cada stage deste workflow deve passar pelo quality gate aplicavel antes de avancar:
+- Gate checklist: definido no `config.yaml` routing para a task correspondente
+- Threshold de passagem: >= 80% (ver `docs/quality-gate-system.md`)
+- Se score < 80%: retornar ao stage anterior com feedback especifico (ver `docs/rework-loop-protocol.md`)
+- Se score < 60%: escalacao imediata para cyber-chief
+
+### Rework Loop
+- Max 3 iteracoes por stage antes de escalacao
+- Feedback deve ser especifico (items falhados, expected vs actual)
+- Todas as iteracoes logadas no `data/registries/decisions-log.md`
+
+### Registry Updates
+- Cada stage completo atualiza o registry correspondente (ver config.yaml routing)
+- Workflow completion registrado no `data/registries/decisions-log.md`
+
+### Cross-References
+- Quality gate system: `docs/quality-gate-system.md`
+- Rework protocol: `docs/rework-loop-protocol.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+- Config routing: `config.yaml`

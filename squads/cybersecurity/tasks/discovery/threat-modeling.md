@@ -39,3 +39,19 @@ Construir threat models para os sistemas e aplicacoes in-scope, identificando am
 - [ ] Controles existentes avaliados contra cada ameaca
 - [ ] Mitigacoes recomendadas sao acionaveis e especificas
 - [ ] Checklist `threat-model-quality` 100% atendido
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | stride-threat-model, pasta-threat-model, appsec-layer |
+| Checklists | threat-model-quality, manico/manico-owasp-top10-mapping |
+| Templates | briefs/threat-model-brief, reports/threat-model-report-template |
+| Registry | data/registries/risk-register |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: data-flow-mapping
+- **Delivers to**: appsec tasks

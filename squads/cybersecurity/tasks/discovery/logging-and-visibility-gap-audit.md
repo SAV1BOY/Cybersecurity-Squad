@@ -39,3 +39,19 @@ Auditar a cobertura de logging e visibilidade de seguranca, identificando gaps q
 - [ ] Recomendacoes sao acionaveis com prioridade definida
 - [ ] Checklist `blueteam-logging-coverage` atendido
 - [ ] Checklist `santos-visibility-matrix` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | defense-layer, detection-coverage-matrix |
+| Checklists | blue-team/blueteam-logging-coverage, santos/santos-visibility-matrix |
+| Templates | trackers/detection-coverage-tracker |
+| Registry | data/registries/detection-rules-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: intake/discovery
+- **Delivers to**: detection-coverage-mapping

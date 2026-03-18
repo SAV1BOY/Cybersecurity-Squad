@@ -37,3 +37,19 @@ Criar um novo agent especializado para o Cybersecurity Squad, definindo identida
 - [ ] Playbooks cobrem as tasks atribuidas
 - [ ] System prompt testado e funcional
 - [ ] Routing integrado no config.yaml
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | compliance-audit-quality |
+| Templates | reports/security-posture-report-template |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: need identified
+- **Delivers to**: agents/ directory

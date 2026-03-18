@@ -37,3 +37,19 @@ Estabelecer criterios claros e mensuraveis de sucesso para o engagement de segur
 - [ ] Deliverables e formato de entrega documentados
 - [ ] Criterios alinhados com o escopo definido no ROE
 - [ ] Checklist `scope-and-roe-quality` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | governance-layer |
+| Checklists | scope-and-roe-quality |
+| Templates | briefs/security-assessment-brief |
+| Registry | data/registries/decisions-log |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: collect-authorization-and-roe
+- **Delivers to**: setup-comms-and-escalation

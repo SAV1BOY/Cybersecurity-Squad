@@ -38,3 +38,19 @@ Analisar tendencias do backlog de vulnerabilidades, identificando padroes de acu
 - [ ] Projecao de trajectory do backlog documentada
 - [ ] Recomendacoes acionaveis para melhorar velocity
 - [ ] Checklist `remediation-plan-quality` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | vuln-triage-playbook, security-kpi-dashboard |
+| Checklists | remediation-plan-quality |
+| Templates | trackers/vuln-backlog-template, trackers/remediation-sla-tracker |
+| Registry | data/metrics/vulnerability-metrics |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: weekly cadence
+- **Delivers to**: remediation prioritization

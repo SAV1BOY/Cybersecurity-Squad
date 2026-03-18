@@ -40,3 +40,19 @@ Revisar todos os findings de seguranca antes da entrega, validando qualidade tec
 - [ ] Nenhum dado sensivel real nos findings
 - [ ] Checklist `security-report-quality` 100% atendido
 - [ ] Checklist `evidence-chain-quality` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | finding-structure-standard, risk-scoring-model |
+| Checklists | security-report-quality, evidence-chain-quality |
+| Templates | reports/technical-report-template, reports/executive-summary-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: any assessment task output
+- **Delivers to**: report-executive-review

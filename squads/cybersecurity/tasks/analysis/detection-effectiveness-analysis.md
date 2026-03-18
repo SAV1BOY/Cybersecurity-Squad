@@ -39,3 +39,19 @@ Analisar a eficacia das deteccoes existentes, medindo precision, recall, false p
 - [ ] Cobertura por ATT&CK tactic documentada
 - [ ] Checklist `blueteam-detection-coverage` atendido
 - [ ] Checklist `blueteam-monitoring-slo` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | detection-coverage-matrix, security-kpi-dashboard |
+| Checklists | blue-team/blueteam-detection-coverage, blue-team/blueteam-monitoring-slo |
+| Templates | trackers/detection-coverage-tracker |
+| Registry | data/metrics/detection-metrics |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: weekly cadence
+- **Delivers to**: detection-rule-development

@@ -40,3 +40,19 @@ Mapear a superficie de ataque completa dos ativos in-scope, identificando todos 
 - [ ] Mapeamento contra MITRE ATT&CK realizado
 - [ ] Checklist `attack-surface-mapping-quality` atendido
 - [ ] Checklist `kim-recon-checklist` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | discovery-layer, mitre-att-ck |
+| Checklists | attack-surface-mapping-quality, kim/kim-recon-checklist |
+| Templates | reports/technical-report-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: asset-discovery
+- **Delivers to**: red-team/appsec/cloudsec tasks

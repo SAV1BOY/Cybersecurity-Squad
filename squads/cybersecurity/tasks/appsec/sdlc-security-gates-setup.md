@@ -39,3 +39,11 @@ Implementar security gates no ciclo de desenvolvimento de software (SDLC), garan
 - [ ] Workflow de excecao documentado e controlado
 - [ ] Desenvolvedores treinados nos novos gates
 - [ ] Checklist `manico-ssdlc-gates` 100% atendido
+
+## Routing & Escalation
+- **frameworks**: owasp-samm, nist-ssdf, appsec-layer
+- **checklists**: manico/manico-ssdlc-gates
+- **templates**: policies/secure-sdlc-policy
+- **registry**: data/registries/decisions-log
+- **receives_from**: cyber-chief directive
+- **delivers_to**: dev squad integration

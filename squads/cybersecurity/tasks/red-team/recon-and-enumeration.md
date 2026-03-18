@@ -40,3 +40,19 @@ Executar reconhecimento e enumeracao detalhada dos ativos in-scope, coletando in
 - [ ] Evidencias documentadas com hash SHA-256
 - [ ] Checklist `kim-recon-checklist` 100% atendido
 - [ ] Checklist `redteam-safe-testing-rules` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | offense-layer, ptes-penetration-testing |
+| Checklists | kim/kim-recon-checklist, red-team/redteam-safe-testing-rules |
+| Templates | reports/finding-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: discovery phase
+- **Delivers to**: vuln-validation

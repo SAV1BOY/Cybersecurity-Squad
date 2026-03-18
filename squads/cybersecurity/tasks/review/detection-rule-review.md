@@ -38,3 +38,19 @@ Revisar regras de deteccao antes de deploy em producao, validando logica, perfor
 - [ ] Mapeamento ATT&CK correto e completo
 - [ ] Checklist `detection-engineering-quality` atendido
 - [ ] Checklist `blueteam-tuning-checklist` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | detection-coverage-matrix |
+| Checklists | detection-engineering-quality, blue-team/blueteam-tuning-checklist |
+| Templates | runbooks/detection-rule-template |
+| Registry | data/registries/detection-rules-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: detection-rule-development
+- **Delivers to**: SOC deployment

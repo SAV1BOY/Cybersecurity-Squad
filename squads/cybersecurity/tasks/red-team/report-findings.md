@@ -41,3 +41,19 @@ Consolidar todos os findings do Red Team em relatorio tecnico e executivo, com a
 - [ ] Evidencias hasheadas (SHA-256) e referenciadas
 - [ ] Checklist `security-report-quality` 100% atendido
 - [ ] Checklist `kim-proof-and-reporting` validado
+
+## Routing (config.yaml)
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | finding-structure-standard, risk-scoring-model |
+| Checklists | security-report-quality, kim/kim-proof-and-reporting, evidence-chain-quality |
+| Templates | reports/technical-report-template, reports/executive-summary-template |
+| Registry | data/registries/findings-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief (ver `docs/delegation-protocol.md`)
+- **Receives from**: all red-team tasks
+- **Delivers to**: findings-review

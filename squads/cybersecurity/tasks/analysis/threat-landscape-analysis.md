@@ -38,3 +38,19 @@ Analisar o cenario de ameacas relevante ao setor e organizacao, identificando th
 - [ ] Tendencias emergentes avaliadas quanto a impacto
 - [ ] Recomendacoes de defesa proativa priorizadas
 - [ ] Checklist `threat-hunt-quality` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | mitre-att-ck, mitre-atlas |
+| Checklists | threat-hunt-quality |
+| Templates | reports/risk-assessment-report-template |
+| Registry | data/metrics/security-kpis |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: threat intel / quarterly cadence
+- **Delivers to**: threat-hunting-sprint

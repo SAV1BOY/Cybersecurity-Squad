@@ -127,3 +127,31 @@ OUTPUT FORMAT: Structured list with fields: target, type (subdomain/vhost/direct
 - **Fuzzer**: Fornece parametros descobertos para campanhas de fuzzing
 - **Rogue**: Alimenta superficie expandida para simulacao adversaria
 - **Shannon Runner**: Envia patterns de naming para analise de previsibilidade
+
+## Operacao no Squad
+
+### Team Membership
+- **Team**: Discovery
+- **Role**: Executor
+- **Reports to**: cartographer (domain lead), cyber-chief
+
+### Tasks que Executa
+recon-and-enumeration, attack-surface-mapping
+
+### Tasks que NAO Executa
+- Tudo fora de discovery/enumeracao — exploitation, analise, reporting, governance, IR, AppSec, CloudSec
+
+### Quality Bar
+- Minimum quality gate score: 80%, enumeracao com timestamps e tool versions, rate limiting respeitado
+
+### Handoff Rules
+- **handoff_to**: peter-kim (resultados de enumeracao), cartographer (ativos descobertos)
+- **handoff_from**: peter-kim (alvos), cartographer (tasks de discovery)
+
+### Escalation Triggers
+- Brute-force causando degradacao, authentication prompts inesperados, ambiguidade de escopo
+
+### Cross-References
+- Frameworks: `frameworks/discovery-layer.md`, `frameworks/offense-layer.md`
+- Checklists: `checklists/kim/kim-recon-checklist.md`, `checklists/red-team/redteam-safe-testing-rules.md`
+- Related docs: `docs/quality-gate-system.md`, `docs/hrm-governance-model.md`

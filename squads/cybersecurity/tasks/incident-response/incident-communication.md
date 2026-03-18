@@ -39,3 +39,19 @@ Gerenciar comunicacao interna e externa durante e apos o incidente, garantindo t
 - [ ] Todas as comunicacoes documentadas com timestamps
 - [ ] Checklist `ir-communication-escalation` atendido
 - [ ] Checklist `carey-communication-under-pressure` validado
+
+## Routing & Escalation
+
+| Campo | Valor |
+|-------|-------|
+| Frameworks | ir-layer, governance-layer |
+| Checklists | incident-response/ir-communication-escalation, carey/carey-communication-under-pressure |
+| Templates | communications/incident-notification-template, communications/incident-external-comms-template |
+| Registry | data/registries/incident-registry |
+
+## Escalation & Handoff
+- Se blocked > 4h: escalar para cyber-chief
+- Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
+- Se fora do escopo: halt e notificar cyber-chief
+- **Receives from**: triage (parallel)
+- **Delivers to**: stakeholders/external parties

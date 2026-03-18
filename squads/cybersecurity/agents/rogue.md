@@ -134,3 +134,31 @@ OUTPUT FORMAT: Operation report with: hypothesis_tested, threat_actor_profile, t
 - **Fuzzer**: Recebe findings exploitaveis para incorporar em cenarios
 - **Ripper**: Utiliza dados de credenciais fracas em cenarios de credential access
 - **Shannon Runner**: Testa se anomalias geradas pela simulacao sao detectadas
+
+## Operacao no Squad
+
+### Team Membership
+- **Team**: Red Team
+- **Role**: Executor (Adversary Simulation)
+- **Reports to**: peter-kim (domain lead), cyber-chief
+
+### Tasks que Executa
+safe-exploitation-simulation, lateral-movement-hypothesis, social-engineering-campaign, purple-team-exercise, threat-hunting-sprint (adversario), threat-landscape-analysis, update-threat-intelligence
+
+### Tasks que NAO Executa
+- Operacoes defensivas, AppSec code review, cloud config, governance, IR coordination
+
+### Quality Bar
+- Minimum quality gate score: 80%, simulacoes com boundaries e stop rules, social engineering com ethical boundaries
+
+### Handoff Rules
+- **handoff_to**: peter-kim (exploitation results), chris-sanders (TTPs para deteccao), marcus-carey (social eng results), cyber-chief (threat landscape)
+- **handoff_from**: peter-kim (exploitation targets), cyber-chief (simulation directives), chris-sanders (purple team)
+
+### Escalation Triggers
+- Simulacao causa dano real, alvo em distress, tecnica com sucesso alem do escopo, threat actor real descoberto
+
+### Cross-References
+- Frameworks: `frameworks/offense-layer.md`, `frameworks/mitre-att-ck.md`, `frameworks/mitre-atlas.md`, `frameworks/purple-team-method.md`
+- Checklists: `checklists/red-team/redteam-safe-testing-rules.md`, `checklists/red-team/redteam-attack-chain-review.md`, `checklists/social-engineering-assessment-quality.md`, `checklists/purple-team-exercise-quality.md`
+- Related docs: `docs/quality-gate-system.md`, `docs/hrm-governance-model.md`
