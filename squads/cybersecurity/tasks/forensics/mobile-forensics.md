@@ -202,7 +202,7 @@ mvt-android check-adb --output /evidence/mvt_results
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | evidence-standard, nist-800-61-incident-response |
+| Frameworks | digital-forensics-methodology, evidence-standard |
 | Checklists | forensics-collection-quality, evidence-chain-quality |
 | Templates | reports/postmortem-template |
 | Registry | data/registries/incident-registry |

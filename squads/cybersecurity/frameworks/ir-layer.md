@@ -127,3 +127,27 @@ Postmortem (ate 5 dias uteis apos resolucao):
 - `incident-response/ir-containment-checklist.md`
 - `forensics-collection-quality.md`
 - `evidence-chain-quality.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- triage-and-severity
+- containment-actions
+- eradication-and-recovery
+- postmortem-and-actions
+- incident-communication
+- tabletop-exercise-facilitation
+
+### Agents
+- chris-sanders
+- omar-santos
+- marcus-carey
+- cyber-chief
+
+### Related Checklists
+- incident-triage-quality
+- forensics-collection-quality
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

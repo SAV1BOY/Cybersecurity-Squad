@@ -153,13 +153,13 @@ For employees who fail phishing simulations repeatedly:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | governance-layer |
-| Checklists | compliance-audit-quality |
-| Templates | reports/security-posture-report-template |
+| Frameworks | security-awareness-maturity, governance-layer |
+| Checklists | carey/carey-security-culture-audit, carey/carey-communication-under-pressure |
+| Templates | communications/incident-notification-template |
 | Registry | data/registries/decisions-log |
 
 ## Escalation & Handoff
 - Se blocked > 4h: escalar para cyber-chief
 - Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
 - Se fora do escopo: halt e notificar cyber-chief
-- **Owner**: cyber-chief + marcus-carey
+- **Owner**: marcus-carey + cyber-chief

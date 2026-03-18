@@ -205,7 +205,7 @@ For each profiled actor:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | mitre-att-ck, mitre-atlas |
+| Frameworks | threat-intelligence-framework, mitre-att-ck, diamond-model |
 | Checklists | threat-hunt-quality |
 | Templates | reports/technical-report-template |
 | Registry | data/registries/findings-registry |
@@ -214,4 +214,4 @@ For each profiled actor:
 - Se blocked > 4h: escalar para cyber-chief
 - Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
 - Se fora do escopo: halt e notificar cyber-chief
-- **Owner**: rogue + shannon-runner
+- **Owner**: rogue + cyber-chief

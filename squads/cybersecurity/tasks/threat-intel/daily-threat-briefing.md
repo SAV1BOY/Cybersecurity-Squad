@@ -168,7 +168,7 @@ For each action item generated:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | mitre-att-ck, mitre-atlas |
+| Frameworks | threat-intelligence-framework, mitre-att-ck |
 | Checklists | threat-hunt-quality |
 | Templates | reports/technical-report-template |
 | Registry | data/registries/findings-registry |

@@ -101,3 +101,26 @@ Cada finding usa o modelo: `Impacto x Probabilidade x Detectabilidade x Esforco`
 - `red-team/redteam-safe-testing-rules.md`
 - `evidence-chain-quality.md`
 - `security-report-quality.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- recon-and-enumeration
+- vuln-validation
+- safe-exploitation-simulation
+- attack-path-analysis
+
+### Agents
+- peter-kim
+- georgia-weidman
+- rogue
+- fuzzer
+- ripper
+
+### Related Checklists
+- pentest-execution-quality
+- red-team/redteam-safe-testing-rules
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

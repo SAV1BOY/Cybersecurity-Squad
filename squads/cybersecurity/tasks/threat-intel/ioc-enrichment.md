@@ -178,13 +178,13 @@ IOC Ingestion -> Dedup -> Auto-Enrich -> Confidence Score ->
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | mitre-att-ck, mitre-atlas |
-| Checklists | threat-hunt-quality |
-| Templates | reports/technical-report-template |
+| Frameworks | threat-intelligence-framework, mitre-att-ck |
+| Checklists | threat-hunt-quality, evidence-chain-quality |
+| Templates | reports/finding-template |
 | Registry | data/registries/findings-registry |
 
 ## Escalation & Handoff
 - Se blocked > 4h: escalar para cyber-chief
 - Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
 - Se fora do escopo: halt e notificar cyber-chief
-- **Owner**: rogue + shannon-runner
+- **Owner**: shannon-runner + rogue

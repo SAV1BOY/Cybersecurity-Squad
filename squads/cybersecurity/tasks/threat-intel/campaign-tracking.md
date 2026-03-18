@@ -207,7 +207,7 @@ When campaign activity ceases:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | mitre-att-ck, mitre-atlas |
+| Frameworks | threat-intelligence-framework, mitre-att-ck, lockheed-martin-kill-chain |
 | Checklists | threat-hunt-quality |
 | Templates | reports/technical-report-template |
 | Registry | data/registries/findings-registry |

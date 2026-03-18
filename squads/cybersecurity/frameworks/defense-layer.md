@@ -119,3 +119,24 @@ A Defense Layer usa ATT&CK como lingua franca:
 - `blue-team/blueteam-detection-coverage.md`
 - `blue-team/blueteam-tuning-checklist.md`
 - `blue-team/blueteam-monitoring-slo.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- logging-and-visibility-gap-audit
+- detection-rule-development
+- soc-operations-improvement
+- cloud-logging-setup
+
+### Agents
+- chris-sanders
+- omar-santos
+- shannon-runner
+
+### Related Checklists
+- detection-engineering-quality
+- blue-team/blueteam-detection-coverage
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

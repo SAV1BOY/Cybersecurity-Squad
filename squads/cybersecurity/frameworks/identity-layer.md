@@ -82,3 +82,20 @@ A Identity Layer trata identidade como o perimetro principal de seguranca. Em am
 
 - `identity-and-ad-assessment-quality.md`
 - `cloud/cloud-iam-least-privilege.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- identity-and-privilege-mapping
+
+### Agents
+- cartographer
+- omar-santos
+
+### Related Checklists
+- identity-and-ad-assessment-quality
+- cloud/cloud-iam-least-privilege
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

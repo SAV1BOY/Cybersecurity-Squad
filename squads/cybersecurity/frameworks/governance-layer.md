@@ -120,3 +120,31 @@ Para cada decisao de seguranca:
 
 - `compliance-audit-quality.md`
 - `security-report-quality.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- define-success-criteria
+- setup-comms-and-escalation
+- sdlc-security-gates-setup
+- cloud-guardrails-setup
+- policy-review
+- security-posture-analysis
+- maturity-assessment
+- roi-security-investment-analysis
+- quarterly-security-review
+- cross-squad-sync
+- maintain-checklists-and-standards
+- security-policy-review
+- compliance-gap-analysis
+
+### Agents
+- cyber-chief
+- marcus-carey
+
+### Related Checklists
+- compliance-audit-quality
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

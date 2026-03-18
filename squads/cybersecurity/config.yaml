@@ -450,7 +450,7 @@ routing:
   roi-security-investment-analysis:
     agents: [cyber-chief, marcus-carey]
     frameworks: [fair-risk-quantification, governance-layer]
-    checklists: []
+    checklists: [compliance-audit-quality]
     templates: [reports/quarterly-security-report-template]
     registry: [data/metrics/security-kpis]
 
@@ -494,7 +494,7 @@ routing:
     agents: [cyber-chief]
     frameworks: [governance-layer]
     checklists: [compliance-audit-quality]
-    templates: []
+    templates: [reports/security-posture-report-template]
     registry: [data/registries/decisions-log]
 
   update-threat-intelligence:
@@ -511,34 +511,217 @@ routing:
     templates: [reports/quarterly-security-report-template]
     registry: [data/metrics/security-kpis, data/scorecards/squad-scorecard]
 
+  # ---- GOVERNANCE ----
+  security-policy-review:
+    agents: [cyber-chief, marcus-carey]
+    frameworks: [governance-layer, nist-csf]
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template]
+    registry: [data/registries/decisions-log]
+
+  risk-assessment-execution:
+    agents: [cyber-chief, omar-santos]
+    frameworks: [fair-risk-quantification, governance-layer]
+    checklists: [compliance-audit-quality]
+    templates: [reports/risk-assessment-report-template]
+    registry: [data/registries/risk-register]
+
+  compliance-gap-analysis:
+    agents: [cyber-chief, omar-santos]
+    frameworks: [governance-layer, nist-800-53-controls, iso-27001-isms]
+    checklists: [compliance-audit-quality]
+    templates: [reports/security-posture-report-template]
+    registry: [data/registries/decisions-log]
+
+  security-awareness-campaign:
+    agents: [marcus-carey, cyber-chief]
+    frameworks: [security-awareness-maturity, governance-layer]
+    checklists: [carey/carey-security-culture-audit, carey/carey-communication-under-pressure]
+    templates: [communications/incident-notification-template]
+    registry: [data/registries/decisions-log]
+
+  vendor-security-review:
+    agents: [cyber-chief, omar-santos]
+    frameworks: [governance-layer, cloudsec-layer]
+    checklists: [cloud-security-assessment-quality, compliance-audit-quality]
+    templates: [reports/risk-assessment-report-template]
+    registry: [data/registries/risk-register]
+
+  # ---- THREAT INTEL ----
+  daily-threat-briefing:
+    agents: [rogue, shannon-runner]
+    frameworks: [threat-intelligence-framework, mitre-att-ck]
+    checklists: [threat-hunt-quality]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  ioc-enrichment:
+    agents: [shannon-runner, rogue]
+    frameworks: [threat-intelligence-framework, mitre-att-ck]
+    checklists: [threat-hunt-quality, evidence-chain-quality]
+    templates: [reports/finding-template]
+    registry: [data/registries/findings-registry]
+
+  threat-actor-profiling:
+    agents: [rogue, cyber-chief]
+    frameworks: [threat-intelligence-framework, mitre-att-ck, diamond-model]
+    checklists: [threat-hunt-quality]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  vulnerability-intelligence:
+    agents: [shannon-runner, omar-santos]
+    frameworks: [vulnerability-management-lifecycle, risk-scoring-model]
+    checklists: [vuln-assessment-quality]
+    templates: [reports/finding-template, trackers/vuln-backlog-template]
+    registry: [data/registries/findings-registry]
+
+  campaign-tracking:
+    agents: [rogue, shannon-runner]
+    frameworks: [threat-intelligence-framework, mitre-att-ck, lockheed-martin-kill-chain]
+    checklists: [threat-hunt-quality]
+    templates: [reports/technical-report-template]
+    registry: [data/registries/findings-registry]
+
+  # ---- FORENSICS ----
+  disk-image-analysis:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [digital-forensics-methodology, evidence-standard]
+    checklists: [forensics-collection-quality, evidence-chain-quality]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
+  memory-forensics:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [digital-forensics-methodology, evidence-standard]
+    checklists: [forensics-collection-quality, evidence-chain-quality]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
+  network-forensics:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [digital-forensics-methodology, evidence-standard]
+    checklists: [forensics-collection-quality, evidence-chain-quality, sanders/sanders-packet-analysis]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
+  mobile-forensics:
+    agents: [chris-sanders, shannon-runner]
+    frameworks: [digital-forensics-methodology, evidence-standard]
+    checklists: [forensics-collection-quality, evidence-chain-quality]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
+  cloud-forensics:
+    agents: [chris-sanders, omar-santos, shannon-runner]
+    frameworks: [digital-forensics-methodology, evidence-standard, cloudsec-layer]
+    checklists: [forensics-collection-quality, evidence-chain-quality, cloud-security-assessment-quality]
+    templates: [reports/postmortem-template]
+    registry: [data/registries/incident-registry]
+
 # ============================================================
 # CROSS-SQUAD INTEGRATION
 # ============================================================
 
 cross_squad:
-  dev_squad:
+  pre-programming:
+    handoff_to_cyber:
+      - "architecture-docs -> cybersecurity intake (for security review)"
+      - "system-design-specs -> threat-modeling input"
     handoff_from_cyber:
-      - "findings -> dev backlog (com prioridade e SLA)"
-      - "secure-coding-guidelines -> dev/reference/"
-      - "sdlc-gates -> dev/workflows/"
-    shared_assets:
-      - threat-models
-      - security-requirements
+      - "threat-model-results -> pre-programming/security-requirements"
+      - "security-architecture-review -> pre-programming/feedback"
+      - "sdlc-security-gates -> pre-programming/workflows"
+    shared_assets: [threat-models, security-requirements, architecture-diagrams]
 
-  infra_squad:
+  data:
+    handoff_to_cyber:
+      - "data-pipeline-configs -> cybersecurity review"
+      - "data-classification-requests -> cybersecurity assessment"
     handoff_from_cyber:
-      - "hardening-baselines -> infra/standards/"
-      - "detection-rules -> infra/monitoring/"
-      - "cloud-guardrails -> infra/policies/"
-    shared_assets:
-      - asset-inventory
-      - network-diagrams
+      - "data-protection-controls -> data/policies"
+      - "access-audit-findings -> data/remediation"
+      - "privacy-impact-assessment -> data/compliance"
+    shared_assets: [data-classification-matrix, access-logs, privacy-controls]
 
-  compliance_squad:
+  design:
+    handoff_to_cyber:
+      - "ui-designs -> cybersecurity accessibility/privacy review"
     handoff_from_cyber:
-      - "evidence-packages -> compliance/evidence/"
-      - "control-mappings -> compliance/frameworks/"
-      - "risk-register -> compliance/risk/"
+      - "security-ux-recommendations -> design/feedback"
+      - "privacy-pattern-library -> design/reference"
+    shared_assets: [authentication-ux-patterns, error-message-guidelines]
+
+  brand:
+    handoff_to_cyber:
+      - "brand-assets -> cybersecurity IP protection review"
+    handoff_from_cyber:
+      - "phishing-simulation-brand-guidelines -> brand/reference"
+      - "incident-communication-templates -> brand/crisis-comms"
+    shared_assets: [communication-templates, brand-voice-for-security-comms]
+
+  copy:
+    handoff_to_cyber:
+      - "security-content-drafts -> cybersecurity technical review"
+    handoff_from_cyber:
+      - "security-awareness-content -> copy/production"
+      - "incident-notification-drafts -> copy/review"
+    shared_assets: [security-terminology, user-facing-error-messages]
+
+  c-level:
+    handoff_to_cyber:
+      - "strategic-priorities -> cybersecurity alignment"
+      - "risk-appetite-definition -> cybersecurity risk-framework"
+    handoff_from_cyber:
+      - "security-posture-report -> c-level/dashboards"
+      - "quarterly-security-review -> c-level/briefings"
+      - "critical-incident-briefing -> c-level/immediate"
+    shared_assets: [risk-register, maturity-scorecard, compliance-status]
+
+  advisory-board:
+    handoff_to_cyber:
+      - "governance-directives -> cybersecurity policy alignment"
+    handoff_from_cyber:
+      - "security-program-maturity-report -> advisory-board/review"
+      - "risk-register-summary -> advisory-board/oversight"
+    shared_assets: [governance-frameworks, risk-appetite-statements]
+
+  storytelling:
+    handoff_to_cyber:
+      - "narrative-content -> cybersecurity sensitivity review"
+    handoff_from_cyber:
+      - "case-studies-sanitized -> storytelling/content"
+      - "lessons-learned-narratives -> storytelling/reference"
+    shared_assets: [incident-case-studies, security-culture-stories]
+
+  movement:
+    handoff_to_cyber:
+      - "community-platform-plans -> cybersecurity review"
+    handoff_from_cyber:
+      - "security-culture-program -> movement/integration"
+      - "security-champion-network -> movement/community"
+    shared_assets: [security-awareness-campaigns, champion-program]
+
+  traffic-masters:
+    handoff_to_cyber:
+      - "ad-platform-configs -> cybersecurity review"
+      - "tracking-pixel-deployments -> privacy review"
+    handoff_from_cyber:
+      - "fraud-detection-alerts -> traffic-masters/operations"
+      - "bot-traffic-analysis -> traffic-masters/analytics"
+    shared_assets: [fraud-indicators, bot-signatures, ad-fraud-patterns]
+
+  deepresearch:
+    handoff_to_cyber:
+      - "research-on-emerging-threats -> cybersecurity threat-intel"
+    handoff_from_cyber:
+      - "threat-landscape-analysis-requests -> deepresearch/queue"
+      - "vulnerability-research-requests -> deepresearch/queue"
+    shared_assets: [threat-research, vulnerability-analysis, industry-reports]
+
+  cybersecurity:
+    note: "Self-reference for internal routing documentation"
+    internal_teams: [discovery, red_team, blue_team, appsec, cloudsec, incident_response, governance]
 
 # ============================================================
 # QUALITY GATES (minimos para qualquer output)

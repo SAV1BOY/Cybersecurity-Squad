@@ -111,7 +111,7 @@ Minimum policy set for a mature security program:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | governance-layer |
+| Frameworks | governance-layer, nist-csf |
 | Checklists | compliance-audit-quality |
 | Templates | reports/security-posture-report-template |
 | Registry | data/registries/decisions-log |

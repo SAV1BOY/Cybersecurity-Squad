@@ -423,6 +423,73 @@ Nova task chega →
 
 Ver detalhes completos em `docs/delegation-protocol.md`.
 
+## 17. Inter-Agent Collaboration Protocol
+
+### Quando Multiplos Agentes Executam a Mesma Task
+
+Muitas tasks no config.yaml listam multiplos agentes. O protocolo de colaboracao define como eles trabalham juntos:
+
+### Modelo de Colaboracao
+
+```
+SEQUENCIAL (default):
+  Agent 1 executa → output passa quality gate → Agent 2 recebe e continua
+  Usado quando: cada agente contribui uma etapa diferente
+
+PARALELO:
+  Agent 1 e Agent 2 executam simultaneamente → outputs consolidados pelo lead
+  Usado quando: agentes cobrem aspectos independentes da mesma task
+
+LEAD + SUPPORT:
+  Lead executa, Support valida/enriquece → output consolidado pelo lead
+  Usado quando: um agente e primario e outro adiciona perspectiva
+```
+
+### Regras de Colaboracao
+
+| Regra | Descricao |
+|-------|-----------|
+| Primeiro agente listado = lead | O primeiro agente no array de `agents:` do config.yaml lidera a task |
+| Lead consolida outputs | Se multiplos agentes produzem outputs, o lead integra em documento unico |
+| Conflito de avaliacao | Se agentes discordam (ex: severidade de finding), framework e o arbitro |
+| Handoff intra-task | Cada transicao entre agentes na mesma task usa o quality gate aplicavel |
+| Comunicacao via artifact | Agentes se comunicam por meio de artifacts (documentos, findings, templates), nunca verbalmente |
+| Lead reporta ao chief | O lead da task reporta resultado final ao cyber-chief ou domain lead |
+
+### Exemplos Praticos
+
+**vuln-validation** (agents: [georgia-weidman, peter-kim, fuzzer]):
+1. georgia-weidman (lead) coordena a validacao
+2. fuzzer executa testes automatizados em paralelo
+3. peter-kim valida manualmente findings criticos
+4. georgia-weidman consolida todos os resultados no finding-template
+
+**detection-coverage-mapping** (agents: [chris-sanders, omar-santos, shannon-runner]):
+1. chris-sanders (lead) define a matriz de cobertura
+2. shannon-runner executa analise de entropia e anomalias
+3. omar-santos mapeia controles existentes
+4. chris-sanders consolida e identifica gaps no detection-coverage-tracker
+
+**triage-and-severity** (agents: [chris-sanders, omar-santos, cyber-chief]):
+1. chris-sanders (lead) executa triagem tecnica
+2. omar-santos avalia impacto operacional
+3. cyber-chief valida classificacao final e autoriza resposta
+
+### Anti-Padroes de Colaboracao
+
+| Anti-Padrao | Correcao |
+|-------------|----------|
+| Dois agentes editam o mesmo documento simultaneamente | Lead integra; outros contribuem em secoes separadas |
+| Agente executa sem saber que outro ja fez parte do trabalho | Verificar registry antes de iniciar |
+| Output de colaboracao sem lead definido | Sempre usar o primeiro agente da lista como lead |
+| Decisao tomada sem framework como referencia | Referenciar framework aplicavel para resolver conflitos |
+
+### Cross-References
+- Config.yaml routing (agents por task): `config.yaml`
+- Agent handoff rules: `agents/*.md > Operacao no Squad`
+- Quality gate system: `docs/quality-gate-system.md`
+- Delegation protocol: `docs/delegation-protocol.md`
+
 ---
 
-*Cybersecurity Squad Architecture v2.0.0 — MMOS Audit Upgrade*
+*Cybersecurity Squad Architecture v3.0.0 — MMOS Audit v3 Upgrade*

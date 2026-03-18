@@ -167,13 +167,13 @@ Update `data/registries/risk-register.md` with:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | governance-layer |
+| Frameworks | fair-risk-quantification, governance-layer |
 | Checklists | compliance-audit-quality |
-| Templates | reports/security-posture-report-template |
-| Registry | data/registries/decisions-log |
+| Templates | reports/risk-assessment-report-template |
+| Registry | data/registries/risk-register |
 
 ## Escalation & Handoff
 - Se blocked > 4h: escalar para cyber-chief
 - Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
 - Se fora do escopo: halt e notificar cyber-chief
-- **Owner**: cyber-chief + marcus-carey
+- **Owner**: cyber-chief + omar-santos

@@ -102,3 +102,24 @@ Checklist obrigatoria: `asset-inventory-quality.md` + `attack-surface-mapping-qu
 - **Alimenta**: Offense Layer, Defense Layer, AppSec Layer, CloudSec Layer
 - **Recebe de**: Intake (scope e autorizacao)
 - **Atualiza**: A cada mudanca significativa de infraestrutura ou novo engajamento
+
+## Used By
+
+### Tasks (config.yaml routing)
+- asset-discovery
+- attack-surface-mapping
+- asset-scoping
+- data-flow-mapping
+
+### Agents
+- cartographer
+- busterer
+- dirber
+
+### Related Checklists
+- asset-inventory-quality
+- attack-surface-mapping-quality
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

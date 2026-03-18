@@ -82,7 +82,9 @@ config.yaml (routing brain)
 | AppSec | jim-manico | secure-code-review, api-security-review, sdlc-security-gates-setup, secrets-management-hardening, dependency-security-audit, security-champion-onboarding, threat-model-workshop |
 | CloudSec | omar-santos | iam-least-privilege-project, storage-exposure-audit, cloud-logging-setup, network-segmentation-review, cloud-guardrails-setup, multi-cloud-security-review |
 | IR | chris-sanders | triage-and-severity, containment-actions, eradication-and-recovery, evidence-collection, postmortem-and-actions, incident-communication |
-| Governance | cyber-chief | intake tasks, review tasks, analysis tasks, operations tasks |
+| Governance | cyber-chief | intake tasks, review tasks, analysis tasks, operations tasks, security-policy-review, risk-assessment-execution, compliance-gap-analysis, security-awareness-campaign, vendor-security-review |
+| Threat Intel | rogue | daily-threat-briefing, ioc-enrichment, threat-actor-profiling, vulnerability-intelligence, campaign-tracking |
+| Forensics | chris-sanders | disk-image-analysis, memory-forensics, network-forensics, mobile-forensics, cloud-forensics |
 
 ## 4. Quality Gate Matrix
 
@@ -105,16 +107,32 @@ config.yaml (routing brain)
 | Rework | Gate failure | Output rejected → Feedback → Agent revises → Resubmit → Re-gate | Updated decisions-log |
 | Kaizen | Monthly cadence | Metrics review → Scorecard → Backlog grooming → Improvements | Updated improvement-backlog |
 
-## 6. Cross-Squad Integration Points
+## 6. Cross-Squad Integration Points (All 12 MMOS Squads)
 
 | Direction | Partner Squad | What Flows | Handoff Document |
 |-----------|--------------|-----------|-----------------|
-| OUT → | Dev Squad | Findings with SLA, secure coding guidelines, SDLC gates | docs/cross-squad-integration-guide.md |
-| OUT → | Infra Squad | Hardening baselines, detection rules, cloud guardrails | docs/cross-squad-integration-guide.md |
-| OUT → | Compliance Squad | Evidence packages, control mappings, risk register | docs/cross-squad-integration-guide.md |
-| ← IN | Dev Squad | Code review requests, new feature notifications | workflows/cross-squad-handoff-workflow.md |
-| ← IN | Infra Squad | Cloud config reviews, asset inventory updates | workflows/cross-squad-handoff-workflow.md |
-| ← IN | Compliance Squad | Audit requirements, regulatory changes | workflows/cross-squad-handoff-workflow.md |
+| OUT → | pre-programming | Threat model results, security architecture review, SDLC gates | docs/cross-squad-integration-guide.md |
+| ← IN | pre-programming | Architecture docs, system design specs for security review | workflows/cross-squad-handoff-workflow.md |
+| OUT → | data | Data protection controls, access audit findings, privacy impact assessment | docs/cross-squad-integration-guide.md |
+| ← IN | data | Data pipeline configs, data classification requests | workflows/cross-squad-handoff-workflow.md |
+| OUT → | design | Security UX recommendations, privacy pattern library | docs/cross-squad-integration-guide.md |
+| ← IN | design | UI designs for security/privacy review | workflows/cross-squad-handoff-workflow.md |
+| OUT → | brand | Phishing simulation brand guidelines, incident comms templates | docs/cross-squad-integration-guide.md |
+| ← IN | brand | Brand assets for IP protection review | workflows/cross-squad-handoff-workflow.md |
+| OUT → | copy | Security awareness content, incident notification drafts | docs/cross-squad-integration-guide.md |
+| ← IN | copy | Security content drafts for technical review | workflows/cross-squad-handoff-workflow.md |
+| OUT → | c-level | Security posture report, quarterly review, critical incident briefings | docs/cross-squad-integration-guide.md |
+| ← IN | c-level | Strategic priorities, risk appetite definition | workflows/cross-squad-handoff-workflow.md |
+| OUT → | advisory-board | Security program maturity report, risk register summary | docs/cross-squad-integration-guide.md |
+| ← IN | advisory-board | Governance directives for policy alignment | workflows/cross-squad-handoff-workflow.md |
+| OUT → | storytelling | Sanitized case studies, lessons learned narratives | docs/cross-squad-integration-guide.md |
+| ← IN | storytelling | Narrative content for sensitivity review | workflows/cross-squad-handoff-workflow.md |
+| OUT → | movement | Security culture program, security champion network | docs/cross-squad-integration-guide.md |
+| ← IN | movement | Community platform plans for security review | workflows/cross-squad-handoff-workflow.md |
+| OUT → | traffic-masters | Fraud detection alerts, bot traffic analysis | docs/cross-squad-integration-guide.md |
+| ← IN | traffic-masters | Ad platform configs, tracking pixel deployments | workflows/cross-squad-handoff-workflow.md |
+| OUT → | deepresearch | Threat landscape analysis requests, vulnerability research requests | docs/cross-squad-integration-guide.md |
+| ← IN | deepresearch | Research on emerging threats | workflows/cross-squad-handoff-workflow.md |
 
 ## 7. Memory Architecture
 
@@ -146,4 +164,4 @@ outputs                (findings, incidents,        (KPIs, trends,
 
 ---
 
-*Connectivity Matrix v1.0.0 — MMOS Audit*
+*Connectivity Matrix v2.0.0 — MMOS Audit v3*

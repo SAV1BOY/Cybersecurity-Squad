@@ -92,3 +92,24 @@ Ordem de prioridade baseada em impacto real:
 - `manico/manico-ssdlc-gates.md`
 - `manico/manico-secure-coding-review.md`
 - `appsec/appsec-api-security-gate.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- secure-code-review
+- sdlc-security-gates-setup
+- data-flow-mapping
+- secrets-management-hardening
+
+### Agents
+- jim-manico
+- fuzzer
+- command-generator
+
+### Related Checklists
+- code-review-security-quality
+- manico/manico-ssdlc-gates
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`

@@ -165,7 +165,7 @@ For gaps requiring investment:
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | governance-layer |
+| Frameworks | governance-layer, nist-800-53-controls, iso-27001-isms |
 | Checklists | compliance-audit-quality |
 | Templates | reports/security-posture-report-template |
 | Registry | data/registries/decisions-log |
@@ -174,4 +174,4 @@ For gaps requiring investment:
 - Se blocked > 4h: escalar para cyber-chief
 - Se quality gate < 80%: rework loop (ver `docs/rework-loop-protocol.md`)
 - Se fora do escopo: halt e notificar cyber-chief
-- **Owner**: cyber-chief + marcus-carey
+- **Owner**: cyber-chief + omar-santos

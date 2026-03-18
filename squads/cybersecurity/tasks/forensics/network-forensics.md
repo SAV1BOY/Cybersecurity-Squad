@@ -220,8 +220,8 @@ cat ssl.log | zeek-cut id.orig_h id.resp_h server_name validation_status | grep 
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | evidence-standard, nist-800-61-incident-response |
-| Checklists | forensics-collection-quality, evidence-chain-quality |
+| Frameworks | digital-forensics-methodology, evidence-standard |
+| Checklists | forensics-collection-quality, evidence-chain-quality, sanders/sanders-packet-analysis |
 | Templates | reports/postmortem-template |
 | Registry | data/registries/incident-registry |
 

@@ -184,7 +184,7 @@ psort.py -o l2tcsv /evidence/case001/timeline.plaso -w /evidence/case001/timelin
 
 | Campo | Valor |
 |-------|-------|
-| Frameworks | evidence-standard, nist-800-61-incident-response |
+| Frameworks | digital-forensics-methodology, evidence-standard |
 | Checklists | forensics-collection-quality, evidence-chain-quality |
 | Templates | reports/postmortem-template |
 | Registry | data/registries/incident-registry |

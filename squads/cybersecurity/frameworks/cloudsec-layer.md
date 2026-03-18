@@ -105,3 +105,27 @@ Retencao: minimo 1 ano para audit trail
 - `cloud/cloud-iam-least-privilege.md`
 - `cloud/cloud-logging-and-trails.md`
 - `cloud/cloud-storage-exposure.md`
+
+## Used By
+
+### Tasks (config.yaml routing)
+- iam-least-privilege-project
+- storage-exposure-audit
+- cloud-logging-setup
+- network-segmentation-review
+- cloud-guardrails-setup
+- multi-cloud-security-review
+- cloud-forensics
+
+### Agents
+- omar-santos
+- cartographer
+- chris-sanders
+
+### Related Checklists
+- cloud-security-assessment-quality
+- cloud/cloud-iam-least-privilege
+
+### Cross-References
+- Config routing: `config.yaml`
+- Quality gate system: `docs/quality-gate-system.md`
